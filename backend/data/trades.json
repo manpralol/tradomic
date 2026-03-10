@@ -1,0 +1,2802 @@
+[
+  {
+    "txId": "TXN6L2IUE96",
+    "symbol": "TCS",
+    "qty": 69,
+    "type": "SELL",
+    "price": 3755.04,
+    "total": 259097.76,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,59,097.76 · Wallet: 0x332f808e...5fa5",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x20381c99...4607 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 38 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "69 TCS shares settled",
+        "ms": 2180
+      }
+    ],
+    "settlementTime": 2.18,
+    "txHash": "0xc7562ce31df66ac185f4d7b0104a1581703b4b21",
+    "timestamp": 1773105484578,
+    "buyer": {
+      "name": "Divya Nair",
+      "wallet": "0xa524ab3f...0918",
+      "upiId": "divyanair@okicici"
+    },
+    "seller": {
+      "name": "Divya Nair",
+      "wallet": "0xc8612ac8...864e",
+      "upiId": "divyanair@upi"
+    },
+    "pan": "AABCD6789L",
+    "paymentRef": "TXN657599047"
+  },
+  {
+    "txId": "TX7FT8T2PTL",
+    "symbol": "HDFCBANK",
+    "qty": 44,
+    "type": "BUY",
+    "price": 1591.8,
+    "total": 70039.2,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹70,039.2 · Wallet: 0xb50ba19d...e363",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x1b03769a...92d8 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 14 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "44 HDFCBANK shares settled",
+        "ms": 2320
+      }
+    ],
+    "settlementTime": 2.32,
+    "txHash": "0xcf8c67dc4c822bc6c4923dc6e0069d1ff37fea1b",
+    "timestamp": 1773105600228,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0xcccd2ac1...4ce4",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Pooja Joshi",
+      "wallet": "0x28912551...096b",
+      "upiId": "poojajoshi@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN931126644"
+  },
+  {
+    "txId": "TXBWI8QRB31",
+    "symbol": "TCS",
+    "qty": 75,
+    "type": "SELL",
+    "price": 3680.24,
+    "total": 276018,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,76,018 · Wallet: 0xc27dd944...8fab",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xba606def...68ad · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 35 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "75 TCS shares settled",
+        "ms": 2290
+      }
+    ],
+    "settlementTime": 2.29,
+    "txHash": "0xabe223c6278a2a0c3d9023112e8ffb9274e7dc19",
+    "timestamp": 1773106184733,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0xed3dcec5...a8c1",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Karan Patel",
+      "wallet": "0xe6024d47...18ab",
+      "upiId": "karanpatel@upi"
+    },
+    "pan": "PQRST5678G",
+    "paymentRef": "TXN674325898"
+  },
+  {
+    "txId": "TXWFHTT4CYW",
+    "symbol": "TATAMOTORS",
+    "qty": 66,
+    "type": "BUY",
+    "price": 982.95,
+    "total": 64874.7,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹64,874.7 · Wallet: 0x6c1eab1a...a5ee",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xac9c82ca...76eb · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 14 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "66 TATAMOTORS shares settled",
+        "ms": 2000
+      }
+    ],
+    "settlementTime": 2,
+    "txHash": "0x109b5a5b8d5d25b043478099053b9acf64463773",
+    "timestamp": 1773106332428,
+    "buyer": {
+      "name": "Rohan Verma",
+      "wallet": "0xf2725179...d919",
+      "upiId": "rohanverma@okicici"
+    },
+    "seller": {
+      "name": "Aditya Kumar",
+      "wallet": "0xd0bf07f7...aa41",
+      "upiId": "adityakumar@upi"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN780231888"
+  },
+  {
+    "txId": "TXTFKOGG9G8",
+    "symbol": "TCS",
+    "qty": 65,
+    "type": "SELL",
+    "price": 3733.73,
+    "total": 242692.45,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,42,692.45 · Wallet: 0xbcd59107...7467",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x9b480ea7...0803 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 16 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "65 TCS shares settled",
+        "ms": 2840
+      }
+    ],
+    "settlementTime": 2.84,
+    "txHash": "0xb66a5ef97be4eda76b4fcd22e6ec374ef159cf3f",
+    "timestamp": 1773107032760,
+    "buyer": {
+      "name": "Siddharth Rao",
+      "wallet": "0x3c3237e2...a469",
+      "upiId": "siddharthrao@okicici"
+    },
+    "seller": {
+      "name": "Arjun Mehta",
+      "wallet": "0x7b127fc6...03a5",
+      "upiId": "arjunmehta@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN690853826"
+  },
+  {
+    "txId": "TXUXHCXOLPI",
+    "symbol": "WIPRO",
+    "qty": 4,
+    "type": "SELL",
+    "price": 514.88,
+    "total": 2059.52,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,059.52 · Wallet: 0xbbc6289b...f622",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x15ad4ab0...2de4 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 1 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "4 WIPRO shares settled",
+        "ms": 2300
+      }
+    ],
+    "settlementTime": 2.3,
+    "txHash": "0x678e0665f7a69832aa6b1b01a972d38a8c9d29ce",
+    "timestamp": 1773107215072,
+    "buyer": {
+      "name": "Divya Nair",
+      "wallet": "0x5a3c48e8...3fcd",
+      "upiId": "divyanair@okicici"
+    },
+    "seller": {
+      "name": "Neha Gupta",
+      "wallet": "0xeb46e11d...0c7b",
+      "upiId": "nehagupta@upi"
+    },
+    "pan": "PQRST5678G",
+    "paymentRef": "TXN247569754"
+  },
+  {
+    "txId": "TX1BS3HHQTL",
+    "symbol": "INFY",
+    "qty": 66,
+    "type": "SELL",
+    "price": 1526.89,
+    "total": 100774.74,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,00,774.74 · Wallet: 0x04200a4f...c8b2",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x4ac75d0c...b507 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 13 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "66 INFY shares settled",
+        "ms": 3070
+      }
+    ],
+    "settlementTime": 3.07,
+    "txHash": "0x230872e8c3d8b1ea662760db4c7099f44fdb6fff",
+    "timestamp": 1773107910821,
+    "buyer": {
+      "name": "Siddharth Rao",
+      "wallet": "0x8291db07...9e57",
+      "upiId": "siddharthrao@okicici"
+    },
+    "seller": {
+      "name": "Priya Sharma",
+      "wallet": "0xabb34f6e...dd95",
+      "upiId": "priyasharma@upi"
+    },
+    "pan": "PQRST5678G",
+    "paymentRef": "TXN144401446"
+  },
+  {
+    "txId": "TXVYCBD30NP",
+    "symbol": "TCS",
+    "qty": 15,
+    "type": "SELL",
+    "price": 3664.41,
+    "total": 54966.15,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹54,966.15 · Wallet: 0xcac55364...6aae",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xf59456ab...d44c · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 1 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "15 TCS shares settled",
+        "ms": 2780
+      }
+    ],
+    "settlementTime": 2.78,
+    "txHash": "0xfa1108fc86fa971956bd78c6fe41b5af32fa1f00",
+    "timestamp": 1773107924362,
+    "buyer": {
+      "name": "Vikram Singh",
+      "wallet": "0xfb4d69f6...3473",
+      "upiId": "vikramsingh@okicici"
+    },
+    "seller": {
+      "name": "Priya Sharma",
+      "wallet": "0xf20d7c7a...4dae",
+      "upiId": "priyasharma@upi"
+    },
+    "pan": "ABCPQ7890J",
+    "paymentRef": "TXN342092428"
+  },
+  {
+    "txId": "TX4L6PDELDQ",
+    "symbol": "TCS",
+    "qty": 19,
+    "type": "BUY",
+    "price": 3657.13,
+    "total": 69485.47,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹69,485.47 · Wallet: 0xd320fd19...661c",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x67932fa5...240c · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 6 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "19 TCS shares settled",
+        "ms": 2600
+      }
+    ],
+    "settlementTime": 2.6,
+    "txHash": "0x48587c5b5cfe983f7b10bc521c17b1d899a5c06d",
+    "timestamp": 1773109111062,
+    "buyer": {
+      "name": "Vikram Singh",
+      "wallet": "0x27103f37...73e4",
+      "upiId": "vikramsingh@okicici"
+    },
+    "seller": {
+      "name": "Pooja Joshi",
+      "wallet": "0x1379928f...35bf",
+      "upiId": "poojajoshi@upi"
+    },
+    "pan": "VWXYZ3456I",
+    "paymentRef": "TXN657395940"
+  },
+  {
+    "txId": "TXT4P7PDI5V",
+    "symbol": "HDFCBANK",
+    "qty": 5,
+    "type": "BUY",
+    "price": 1548.16,
+    "total": 7740.8,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹7,740.8 · Wallet: 0xff7be5a5...7595",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x86793219...9ffe · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 1 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "5 HDFCBANK shares settled",
+        "ms": 2810
+      }
+    ],
+    "settlementTime": 2.81,
+    "txHash": "0x28ad171265382888d33536b6ab2d666a53ac29df",
+    "timestamp": 1773109639938,
+    "buyer": {
+      "name": "Pooja Joshi",
+      "wallet": "0x1c285a7c...2739",
+      "upiId": "poojajoshi@okicici"
+    },
+    "seller": {
+      "name": "Aditya Kumar",
+      "wallet": "0xac5c012e...ca9e",
+      "upiId": "adityakumar@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN838502447"
+  },
+  {
+    "txId": "TXQ5CA0JVU3",
+    "symbol": "HDFCBANK",
+    "qty": 65,
+    "type": "SELL",
+    "price": 1572.59,
+    "total": 102218.35,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,02,218.35 · Wallet: 0xffb89ba5...e162",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x5d84da86...1962 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 15 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "65 HDFCBANK shares settled",
+        "ms": 2230
+      }
+    ],
+    "settlementTime": 2.23,
+    "txHash": "0xf51049306d74b52e03f91c95829e263604f29994",
+    "timestamp": 1773109812673,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0x4a44e533...a986",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Arjun Mehta",
+      "wallet": "0xa44f888f...d7bf",
+      "upiId": "arjunmehta@upi"
+    },
+    "pan": "ABCPQ7890J",
+    "paymentRef": "TXN498163951"
+  },
+  {
+    "txId": "TXYXPW4T4W7",
+    "symbol": "ICICIBANK",
+    "qty": 91,
+    "type": "BUY",
+    "price": 1258.33,
+    "total": 114508.03,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,14,508.03 · Wallet: 0xe20d83b8...41bf",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x509a29e6...612f · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 27 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "91 ICICIBANK shares settled",
+        "ms": 2700
+      }
+    ],
+    "settlementTime": 2.7,
+    "txHash": "0xefca9fc75574cb5efde9965981f9f5138cb43abd",
+    "timestamp": 1773110525597,
+    "buyer": {
+      "name": "Neha Gupta",
+      "wallet": "0xab35e985...daf8",
+      "upiId": "nehagupta@okicici"
+    },
+    "seller": {
+      "name": "Neha Gupta",
+      "wallet": "0x335e0a85...dcd8",
+      "upiId": "nehagupta@upi"
+    },
+    "pan": "AABCD6789L",
+    "paymentRef": "TXN668353685"
+  },
+  {
+    "txId": "TX793U27T4J",
+    "symbol": "TCS",
+    "qty": 83,
+    "type": "SELL",
+    "price": 3659.66,
+    "total": 303751.78,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹3,03,751.78 · Wallet: 0xd52253ec...4ffc",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x68d917e4...0b3f · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 38 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "83 TCS shares settled",
+        "ms": 1900
+      }
+    ],
+    "settlementTime": 1.9,
+    "txHash": "0x603828a8f2981964c9ac784f9ee0aba79603af5b",
+    "timestamp": 1773110734789,
+    "buyer": {
+      "name": "Aditya Kumar",
+      "wallet": "0x810ae8cf...a9ca",
+      "upiId": "adityakumar@okicici"
+    },
+    "seller": {
+      "name": "Aditya Kumar",
+      "wallet": "0x8c7a5b49...62c2",
+      "upiId": "adityakumar@upi"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN866507766"
+  },
+  {
+    "txId": "TXZI5OWEQ1E",
+    "symbol": "RELIANCE",
+    "qty": 65,
+    "type": "BUY",
+    "price": 2970.16,
+    "total": 193060.4,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,93,060.4 · Wallet: 0xb7f37782...8b69",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x0f316a67...f367 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 47 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "65 RELIANCE shares settled",
+        "ms": 3090
+      }
+    ],
+    "settlementTime": 3.09,
+    "txHash": "0x0dd6a9146c4811fca70556120c9b2b4cff1d35b6",
+    "timestamp": 1773111101811,
+    "buyer": {
+      "name": "Ananya Iyer",
+      "wallet": "0xb9fdaac3...9685",
+      "upiId": "ananyaiyer@okicici"
+    },
+    "seller": {
+      "name": "Karan Patel",
+      "wallet": "0x64e6b097...2b53",
+      "upiId": "karanpatel@upi"
+    },
+    "pan": "ABCPQ7890J",
+    "paymentRef": "TXN219953904"
+  },
+  {
+    "txId": "TXOI6XM3SSA",
+    "symbol": "TATAMOTORS",
+    "qty": 76,
+    "type": "BUY",
+    "price": 975.48,
+    "total": 74136.48,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹74,136.48 · Wallet: 0xe5844e00...18f8",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x83cc16fd...8f7f · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 72 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "76 TATAMOTORS shares settled",
+        "ms": 3190
+      }
+    ],
+    "settlementTime": 3.19,
+    "txHash": "0xca925881bebf511a71e4fc717457964afb4fd97c",
+    "timestamp": 1773111163946,
+    "buyer": {
+      "name": "Divya Nair",
+      "wallet": "0xbfbd741b...2fda",
+      "upiId": "divyanair@okicici"
+    },
+    "seller": {
+      "name": "Karan Patel",
+      "wallet": "0x83ad5827...3fba",
+      "upiId": "karanpatel@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN446494613"
+  },
+  {
+    "txId": "TXCGN0TLKRM",
+    "symbol": "TATAMOTORS",
+    "qty": 65,
+    "type": "SELL",
+    "price": 964.85,
+    "total": 62715.25,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹62,715.25 · Wallet: 0xb6cd1b63...7583",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xa8f61ed7...93ac · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 32 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "65 TATAMOTORS shares settled",
+        "ms": 2470
+      }
+    ],
+    "settlementTime": 2.47,
+    "txHash": "0xf2b46c5b4300384834d8c16f0d3868488e48d30d",
+    "timestamp": 1773111395439,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0x46e73739...2096",
+      "upiId": "arjunmehta@okicici"
+    },
+    "seller": {
+      "name": "Rohan Verma",
+      "wallet": "0x4681dc41...b0cd",
+      "upiId": "rohanverma@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN794978723"
+  },
+  {
+    "txId": "TXC84AT2TFB",
+    "symbol": "WIPRO",
+    "qty": 63,
+    "type": "SELL",
+    "price": 514.29,
+    "total": 32400.27,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹32,400.27 · Wallet: 0x977936ee...cf83",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x95c5ad9a...060a · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 35 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "63 WIPRO shares settled",
+        "ms": 2690
+      }
+    ],
+    "settlementTime": 2.69,
+    "txHash": "0xcdb345be909aaa7cde46fd7e23543716b0c74756",
+    "timestamp": 1773111530711,
+    "buyer": {
+      "name": "Aditya Kumar",
+      "wallet": "0x1594ae5b...22c5",
+      "upiId": "adityakumar@okicici"
+    },
+    "seller": {
+      "name": "Siddharth Rao",
+      "wallet": "0x37180c00...a041",
+      "upiId": "siddharthrao@upi"
+    },
+    "pan": "MNRST2345K",
+    "paymentRef": "TXN888570895"
+  },
+  {
+    "txId": "TXDT30MJ5HR",
+    "symbol": "TCS",
+    "qty": 16,
+    "type": "SELL",
+    "price": 3709.98,
+    "total": 59359.68,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹59,359.68 · Wallet: 0x9230e603...af18",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x15c9ae51...a0a5 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 6 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "16 TCS shares settled",
+        "ms": 1940
+      }
+    ],
+    "settlementTime": 1.94,
+    "txHash": "0xb31976a1f268ddce21fa66b64c8fbe3a955917b6",
+    "timestamp": 1773111572988,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0xed68f668...73ef",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Karan Patel",
+      "wallet": "0x13768b1b...9797",
+      "upiId": "karanpatel@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN942108636"
+  },
+  {
+    "txId": "TXMC5UVVJD4",
+    "symbol": "TCS",
+    "qty": 24,
+    "type": "BUY",
+    "price": 3755.74,
+    "total": 90137.76,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹90,137.76 · Wallet: 0x3c5e87ae...dc9c",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x630f9707...9e5e · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 19 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "24 TCS shares settled",
+        "ms": 2690
+      }
+    ],
+    "settlementTime": 2.69,
+    "txHash": "0xff74ba826b93137bbb8184e4096eb803c61fbd98",
+    "timestamp": 1773113121865,
+    "buyer": {
+      "name": "Aditya Kumar",
+      "wallet": "0x0a734a2b...9ef8",
+      "upiId": "adityakumar@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0xd6e86284...0bae",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "VWXYZ3456I",
+    "paymentRef": "TXN621236390"
+  },
+  {
+    "txId": "TXE7MZ1NRM6",
+    "symbol": "HDFCBANK",
+    "qty": 61,
+    "type": "BUY",
+    "price": 1568.9,
+    "total": 95702.9,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹95,702.9 · Wallet: 0xc970716d...b7d0",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x247c7cb5...7562 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 30 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "61 HDFCBANK shares settled",
+        "ms": 2720
+      }
+    ],
+    "settlementTime": 2.72,
+    "txHash": "0xef00aed713a6d693b71370e9b7b28946b191f55c",
+    "timestamp": 1773114151257,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0x141ef10d...5fcd",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Divya Nair",
+      "wallet": "0x7d35506d...0bda",
+      "upiId": "divyanair@upi"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN102267696"
+  },
+  {
+    "txId": "TXCR81BVEPX",
+    "symbol": "WIPRO",
+    "qty": 39,
+    "type": "SELL",
+    "price": 514.47,
+    "total": 20064.33,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹20,064.33 · Wallet: 0x8d3ad065...8bc1",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x3027c66d...34f0 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 38 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "39 WIPRO shares settled",
+        "ms": 2200
+      }
+    ],
+    "settlementTime": 2.2,
+    "txHash": "0xf635e3aa01f6b38896bc15ca99394124ac313873",
+    "timestamp": 1773115424833,
+    "buyer": {
+      "name": "Aditya Kumar",
+      "wallet": "0x3b93bef3...43ae",
+      "upiId": "adityakumar@okicici"
+    },
+    "seller": {
+      "name": "Aditya Kumar",
+      "wallet": "0x828301f5...877d",
+      "upiId": "adityakumar@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN647316832"
+  },
+  {
+    "txId": "TXLC32880IK",
+    "symbol": "WIPRO",
+    "qty": 19,
+    "type": "BUY",
+    "price": 506.55,
+    "total": 9624.45,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹9,624.45 · Wallet: 0x07c9f852...4517",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x09d6ae96...53b0 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 13 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "19 WIPRO shares settled",
+        "ms": 3100
+      }
+    ],
+    "settlementTime": 3.1,
+    "txHash": "0xd3cb2381773b708235b4b21d7c8a621fb8999ac5",
+    "timestamp": 1773115805262,
+    "buyer": {
+      "name": "Pooja Joshi",
+      "wallet": "0x8399e233...067f",
+      "upiId": "poojajoshi@okicici"
+    },
+    "seller": {
+      "name": "Neha Gupta",
+      "wallet": "0xff38c0f5...9226",
+      "upiId": "nehagupta@upi"
+    },
+    "pan": "MNRST2345K",
+    "paymentRef": "TXN304865659"
+  },
+  {
+    "txId": "TXPLJDNQOPQ",
+    "symbol": "WIPRO",
+    "qty": 92,
+    "type": "SELL",
+    "price": 512.94,
+    "total": 47190.48,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹47,190.48 · Wallet: 0x68d76f13...25fc",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x6806444a...0447 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 78 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "92 WIPRO shares settled",
+        "ms": 2730
+      }
+    ],
+    "settlementTime": 2.73,
+    "txHash": "0x44cfac4f4c356458f9f245635c723d94233c1bce",
+    "timestamp": 1773116045109,
+    "buyer": {
+      "name": "Priya Sharma",
+      "wallet": "0xb17e2121...d8b4",
+      "upiId": "priyasharma@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0xbaacfda6...e42c",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN661272594"
+  },
+  {
+    "txId": "TXS5AJZ6FF0",
+    "symbol": "TCS",
+    "qty": 59,
+    "type": "SELL",
+    "price": 3677.82,
+    "total": 216991.38,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,16,991.38 · Wallet: 0x909ba83d...2b36",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x199f6344...2666 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 46 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "59 TCS shares settled",
+        "ms": 2070
+      }
+    ],
+    "settlementTime": 2.07,
+    "txHash": "0xa4190e09b0ae6d7a51f237f07e0ff92c6b15dcd4",
+    "timestamp": 1773116557680,
+    "buyer": {
+      "name": "Neha Gupta",
+      "wallet": "0x272e0e7c...7d97",
+      "upiId": "nehagupta@okicici"
+    },
+    "seller": {
+      "name": "Divya Nair",
+      "wallet": "0x36044ad9...019d",
+      "upiId": "divyanair@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN209438436"
+  },
+  {
+    "txId": "TXMGMX0HIF7",
+    "symbol": "INFY",
+    "qty": 70,
+    "type": "SELL",
+    "price": 1514.2,
+    "total": 105994,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,05,994 · Wallet: 0x16d1e99d...d018",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x372fb5e3...36cb · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 54 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "70 INFY shares settled",
+        "ms": 2240
+      }
+    ],
+    "settlementTime": 2.24,
+    "txHash": "0x664a54cd891f861c47971966029ef0ea7bf38ed5",
+    "timestamp": 1773116616479,
+    "buyer": {
+      "name": "Divya Nair",
+      "wallet": "0xd28038a1...b543",
+      "upiId": "divyanair@okicici"
+    },
+    "seller": {
+      "name": "Pooja Joshi",
+      "wallet": "0x56657e63...8b19",
+      "upiId": "poojajoshi@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN702433421"
+  },
+  {
+    "txId": "TXEDTFLOCFT",
+    "symbol": "HDFCBANK",
+    "qty": 99,
+    "type": "SELL",
+    "price": 1567.3,
+    "total": 155162.7,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,55,162.7 · Wallet: 0xa6835dd1...8ba7",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x27c3de15...0d31 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 80 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "99 HDFCBANK shares settled",
+        "ms": 2170
+      }
+    ],
+    "settlementTime": 2.17,
+    "txHash": "0x4fbee5c759a53a73db628254b695add05b6c9b5c",
+    "timestamp": 1773116805096,
+    "buyer": {
+      "name": "Pooja Joshi",
+      "wallet": "0x1c670113...87ba",
+      "upiId": "poojajoshi@okicici"
+    },
+    "seller": {
+      "name": "Rohan Verma",
+      "wallet": "0x6b3e35e1...ca7b",
+      "upiId": "rohanverma@upi"
+    },
+    "pan": "PQRST5678G",
+    "paymentRef": "TXN399774081"
+  },
+  {
+    "txId": "TXTYZWSPH8N",
+    "symbol": "WIPRO",
+    "qty": 5,
+    "type": "SELL",
+    "price": 514.79,
+    "total": 2573.95,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,573.95 · Wallet: 0x757d688f...e771",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x4932e5b6...2faa · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 2 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "5 WIPRO shares settled",
+        "ms": 2840
+      }
+    ],
+    "settlementTime": 2.84,
+    "txHash": "0x4b4196ea9ce9a89ede1385ac8cac1fdbb6df5667",
+    "timestamp": 1773117773513,
+    "buyer": {
+      "name": "Priya Sharma",
+      "wallet": "0xd2a00595...606b",
+      "upiId": "priyasharma@okicici"
+    },
+    "seller": {
+      "name": "Pooja Joshi",
+      "wallet": "0x343b090d...c044",
+      "upiId": "poojajoshi@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN251209841"
+  },
+  {
+    "txId": "TXI3LD01I90",
+    "symbol": "ICICIBANK",
+    "qty": 2,
+    "type": "SELL",
+    "price": 1262.01,
+    "total": 2524.02,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,524.02 · Wallet: 0x8f1a4dd4...0b3d",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x87d7d607...c430 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 2 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "2 ICICIBANK shares settled",
+        "ms": 2080
+      }
+    ],
+    "settlementTime": 2.08,
+    "txHash": "0x2711d124795b5d5f282cdc9730ec50319a22f14b",
+    "timestamp": 1773118547173,
+    "buyer": {
+      "name": "Vikram Singh",
+      "wallet": "0x8bc35afc...02b3",
+      "upiId": "vikramsingh@okicici"
+    },
+    "seller": {
+      "name": "Aditya Kumar",
+      "wallet": "0x0332a914...5181",
+      "upiId": "adityakumar@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN847022947"
+  },
+  {
+    "txId": "TXGLVHFMA9C",
+    "symbol": "WIPRO",
+    "qty": 85,
+    "type": "BUY",
+    "price": 513.23,
+    "total": 43624.55,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹43,624.55 · Wallet: 0x79a91483...4fae",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x0a940a79...ddad · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 50 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "85 WIPRO shares settled",
+        "ms": 2300
+      }
+    ],
+    "settlementTime": 2.3,
+    "txHash": "0x14d5c4eacfdf4f2aba43987765d1f292f593151c",
+    "timestamp": 1773119078869,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0x62d9817b...efc1",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Siddharth Rao",
+      "wallet": "0x7f79dfe4...cd44",
+      "upiId": "siddharthrao@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN681351862"
+  },
+  {
+    "txId": "TXMU8MZ302B",
+    "symbol": "HDFCBANK",
+    "qty": 26,
+    "type": "BUY",
+    "price": 1572.87,
+    "total": 40894.62,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹40,894.62 · Wallet: 0x3d87059e...bdeb",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x7b1d63f6...115e · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 14 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "26 HDFCBANK shares settled",
+        "ms": 2410
+      }
+    ],
+    "settlementTime": 2.41,
+    "txHash": "0xd8d9b3f9db42c6904f46e6ae8a0f2298d7f6de8a",
+    "timestamp": 1773119173962,
+    "buyer": {
+      "name": "Pooja Joshi",
+      "wallet": "0x302b7c22...ccae",
+      "upiId": "poojajoshi@okicici"
+    },
+    "seller": {
+      "name": "Divya Nair",
+      "wallet": "0xe1962e3a...db40",
+      "upiId": "divyanair@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN742174515"
+  },
+  {
+    "txId": "TXGKA17ZJH5",
+    "symbol": "ICICIBANK",
+    "qty": 13,
+    "type": "BUY",
+    "price": 1236.38,
+    "total": 16072.94,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹16,072.94 · Wallet: 0x56d8c3da...5e47",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xa2c5a154...a73f · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 4 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "13 ICICIBANK shares settled",
+        "ms": 2620
+      }
+    ],
+    "settlementTime": 2.62,
+    "txHash": "0xf688563aeda9426f9ca2f6a7254480d1dab0e5b2",
+    "timestamp": 1773119389131,
+    "buyer": {
+      "name": "Priya Sharma",
+      "wallet": "0x92b8260f...b5a6",
+      "upiId": "priyasharma@okicici"
+    },
+    "seller": {
+      "name": "Divya Nair",
+      "wallet": "0x8e2df552...7258",
+      "upiId": "divyanair@upi"
+    },
+    "pan": "AABCD6789L",
+    "paymentRef": "TXN280385938"
+  },
+  {
+    "txId": "TXI13B7MNLI",
+    "symbol": "RELIANCE",
+    "qty": 51,
+    "type": "BUY",
+    "price": 3038.07,
+    "total": 154941.57,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,54,941.57 · Wallet: 0xb4be9d93...4c87",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x09c1a9e3...8c13 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 23 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "51 RELIANCE shares settled",
+        "ms": 3180
+      }
+    ],
+    "settlementTime": 3.18,
+    "txHash": "0x9c94cb1a8ce3898dc8e9d1b47357cd398ad8bede",
+    "timestamp": 1773120168601,
+    "buyer": {
+      "name": "Divya Nair",
+      "wallet": "0x594948d2...33da",
+      "upiId": "divyanair@okicici"
+    },
+    "seller": {
+      "name": "Vikram Singh",
+      "wallet": "0x81ae55d6...e659",
+      "upiId": "vikramsingh@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN365983743"
+  },
+  {
+    "txId": "TXPJC3RX02N",
+    "symbol": "WIPRO",
+    "qty": 8,
+    "type": "SELL",
+    "price": 502.6,
+    "total": 4020.8,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹4,020.8 · Wallet: 0xf55e730e...4f32",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x6fcc1bab...d993 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 4 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "8 WIPRO shares settled",
+        "ms": 2950
+      }
+    ],
+    "settlementTime": 2.95,
+    "txHash": "0xd6f2b514a8138c0b03cddf57b8a228922575e6c0",
+    "timestamp": 1773120913307,
+    "buyer": {
+      "name": "Shweta Bansal",
+      "wallet": "0xe3c3ee59...cf90",
+      "upiId": "shwetabansal@okicici"
+    },
+    "seller": {
+      "name": "Siddharth Rao",
+      "wallet": "0xad649502...81e1",
+      "upiId": "siddharthrao@upi"
+    },
+    "pan": "AABCD6789L",
+    "paymentRef": "TXN755150536"
+  },
+  {
+    "txId": "TX60NC8A8FW",
+    "symbol": "WIPRO",
+    "qty": 15,
+    "type": "BUY",
+    "price": 505.49,
+    "total": 7582.35,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹7,582.35 · Wallet: 0x8a3b622e...1047",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xe17e3ef6...804e · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 5 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "15 WIPRO shares settled",
+        "ms": 2880
+      }
+    ],
+    "settlementTime": 2.88,
+    "txHash": "0x334f9930cd61e241cb6b50a592921ec2808b8608",
+    "timestamp": 1773121811740,
+    "buyer": {
+      "name": "Rohan Verma",
+      "wallet": "0x837a561f...ada5",
+      "upiId": "rohanverma@okicici"
+    },
+    "seller": {
+      "name": "Priya Sharma",
+      "wallet": "0x573a3cf3...3635",
+      "upiId": "priyasharma@upi"
+    },
+    "pan": "MNRST2345K",
+    "paymentRef": "TXN280987881"
+  },
+  {
+    "txId": "TXIGWWV3A11",
+    "symbol": "INFY",
+    "qty": 48,
+    "type": "SELL",
+    "price": 1492.3,
+    "total": 71630.4,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹71,630.4 · Wallet: 0x6de8ac89...a316",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x34c6a426...9203 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 31 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "48 INFY shares settled",
+        "ms": 2120
+      }
+    ],
+    "settlementTime": 2.12,
+    "txHash": "0xa5e05c82bca31ee89aa0ae7781c3c65b49b8fcac",
+    "timestamp": 1773123091791,
+    "buyer": {
+      "name": "Shweta Bansal",
+      "wallet": "0x23e45097...da25",
+      "upiId": "shwetabansal@okicici"
+    },
+    "seller": {
+      "name": "Divya Nair",
+      "wallet": "0x8de5fce8...62ab",
+      "upiId": "divyanair@upi"
+    },
+    "pan": "MNRST2345K",
+    "paymentRef": "TXN914697495"
+  },
+  {
+    "txId": "TXXJIPCWON4",
+    "symbol": "ICICIBANK",
+    "qty": 88,
+    "type": "BUY",
+    "price": 1261.19,
+    "total": 110984.72,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,10,984.72 · Wallet: 0x79cde66b...4177",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x39fe5e34...b755 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 15 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "88 ICICIBANK shares settled",
+        "ms": 2050
+      }
+    ],
+    "settlementTime": 2.05,
+    "txHash": "0x7355742fdfc969f7b2813e7f565aafb26c59e498",
+    "timestamp": 1773123179474,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0xdfa6c996...b556",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Rohan Verma",
+      "wallet": "0x34e5ecbc...67a3",
+      "upiId": "rohanverma@upi"
+    },
+    "pan": "MNRST2345K",
+    "paymentRef": "TXN497106209"
+  },
+  {
+    "txId": "TXB9R3A5YGK",
+    "symbol": "ICICIBANK",
+    "qty": 56,
+    "type": "BUY",
+    "price": 1232.65,
+    "total": 69028.4,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹69,028.4 · Wallet: 0x6698c4fb...8f10",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xb1d732b0...b46f · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 31 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "56 ICICIBANK shares settled",
+        "ms": 3070
+      }
+    ],
+    "settlementTime": 3.07,
+    "txHash": "0x656aa9b2bf2b22d08c1fdf91d48e015d88eb3d6f",
+    "timestamp": 1773123355467,
+    "buyer": {
+      "name": "Vikram Singh",
+      "wallet": "0x028fed22...b9f0",
+      "upiId": "vikramsingh@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0xb14b0e14...d23a",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN742656940"
+  },
+  {
+    "txId": "TX5F73JLSU3",
+    "symbol": "TCS",
+    "qty": 100,
+    "type": "BUY",
+    "price": 3804.52,
+    "total": 380452,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹3,80,452 · Wallet: 0x6cf44422...77a1",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xb6b44f5b...ecad · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 61 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "100 TCS shares settled",
+        "ms": 3070
+      }
+    ],
+    "settlementTime": 3.07,
+    "txHash": "0xa4879e01b80bc07c5156e020980fcff61f562aaf",
+    "timestamp": 1773123822410,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0xd41f1307...66d5",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Vikram Singh",
+      "wallet": "0xa18bf826...1e5c",
+      "upiId": "vikramsingh@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN238183765"
+  },
+  {
+    "txId": "TXKPTJ2NRGQ",
+    "symbol": "WIPRO",
+    "qty": 73,
+    "type": "SELL",
+    "price": 498.9,
+    "total": 36419.7,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹36,419.7 · Wallet: 0x85d2e7c3...fd20",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xe7f8b93e...a181 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 20 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "73 WIPRO shares settled",
+        "ms": 2780
+      }
+    ],
+    "settlementTime": 2.78,
+    "txHash": "0x9521e9a65b2737fd6fbdee791955838790f17d98",
+    "timestamp": 1773124099960,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0xa2821964...e2e4",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Arjun Mehta",
+      "wallet": "0x381770f0...2930",
+      "upiId": "arjunmehta@upi"
+    },
+    "pan": "EFGHI0123M",
+    "paymentRef": "TXN156193042"
+  },
+  {
+    "txId": "TXFDCJNALNN",
+    "symbol": "ICICIBANK",
+    "qty": 98,
+    "type": "SELL",
+    "price": 1267.9,
+    "total": 124254.2,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,24,254.2 · Wallet: 0x26b9dba2...3ab6",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xcd856de9...4daa · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 95 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "98 ICICIBANK shares settled",
+        "ms": 2020
+      }
+    ],
+    "settlementTime": 2.02,
+    "txHash": "0x65b50ebda23ba5a9db671a37a68120d67f6fc8cd",
+    "timestamp": 1773124231040,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0xe264e5ee...095d",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0x4d6c714c...9d45",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "ABCPQ7890J",
+    "paymentRef": "TXN395685275"
+  },
+  {
+    "txId": "TXBJPL2KUSH",
+    "symbol": "WIPRO",
+    "qty": 84,
+    "type": "SELL",
+    "price": 499.31,
+    "total": 41942.04,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹41,942.04 · Wallet: 0xbb16bb24...9308",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xe22af194...2dfd · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 76 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "84 WIPRO shares settled",
+        "ms": 2480
+      }
+    ],
+    "settlementTime": 2.48,
+    "txHash": "0xb93d0bac6d42705aa0d7d91e28509095446b5ce2",
+    "timestamp": 1773125735741,
+    "buyer": {
+      "name": "Divya Nair",
+      "wallet": "0x94e280a4...5187",
+      "upiId": "divyanair@okicici"
+    },
+    "seller": {
+      "name": "Rohan Verma",
+      "wallet": "0x197a41b8...b812",
+      "upiId": "rohanverma@upi"
+    },
+    "pan": "VWXYZ3456I",
+    "paymentRef": "TXN783267146"
+  },
+  {
+    "txId": "TXWPVIW2BKA",
+    "symbol": "WIPRO",
+    "qty": 69,
+    "type": "BUY",
+    "price": 499.99,
+    "total": 34499.31,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹34,499.31 · Wallet: 0xc56a06c5...cd06",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x145d4e38...0587 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 11 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "69 WIPRO shares settled",
+        "ms": 1830
+      }
+    ],
+    "settlementTime": 1.83,
+    "txHash": "0x51621d48d4787d2f619498bdba0aa2f2a432eb8d",
+    "timestamp": 1773126706866,
+    "buyer": {
+      "name": "Rohan Verma",
+      "wallet": "0x546f801e...65e6",
+      "upiId": "rohanverma@okicici"
+    },
+    "seller": {
+      "name": "Ananya Iyer",
+      "wallet": "0xdba727d4...1eeb",
+      "upiId": "ananyaiyer@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN508377340"
+  },
+  {
+    "txId": "TXPT7URY6KM",
+    "symbol": "RELIANCE",
+    "qty": 97,
+    "type": "SELL",
+    "price": 2971.37,
+    "total": 288222.89,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹2,88,222.89 · Wallet: 0x20aa399b...c932",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x5d183569...4ffd · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 7 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "97 RELIANCE shares settled",
+        "ms": 2600
+      }
+    ],
+    "settlementTime": 2.6,
+    "txHash": "0xa55956ddfba6e1cd4763b1af37078dbba90c4be5",
+    "timestamp": 1773127019738,
+    "buyer": {
+      "name": "Vikram Singh",
+      "wallet": "0x96d38a46...9ada",
+      "upiId": "vikramsingh@okicici"
+    },
+    "seller": {
+      "name": "Vikram Singh",
+      "wallet": "0x30bbe479...2adf",
+      "upiId": "vikramsingh@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN866479179"
+  },
+  {
+    "txId": "TXRERUQ1QS1",
+    "symbol": "ICICIBANK",
+    "qty": 81,
+    "type": "SELL",
+    "price": 1248.31,
+    "total": 101113.11,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,01,113.11 · Wallet: 0xe6d29b77...cd4b",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xbc8c412e...a61b · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 71 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "81 ICICIBANK shares settled",
+        "ms": 2730
+      }
+    ],
+    "settlementTime": 2.73,
+    "txHash": "0x933cfebbefb97ee20376d9b7216d0d40a1308e4e",
+    "timestamp": 1773127834268,
+    "buyer": {
+      "name": "Karan Patel",
+      "wallet": "0x352e3f84...d4fe",
+      "upiId": "karanpatel@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0xe5d21e08...6e46",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "ABCPQ7890J",
+    "paymentRef": "TXN522274214"
+  },
+  {
+    "txId": "TXF6LM4VZ36",
+    "symbol": "WIPRO",
+    "qty": 20,
+    "type": "BUY",
+    "price": 511.12,
+    "total": 10222.4,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹10,222.4 · Wallet: 0xb73e2515...c601",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xe1e39d21...1bbe · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 16 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "20 WIPRO shares settled",
+        "ms": 2450
+      }
+    ],
+    "settlementTime": 2.45,
+    "txHash": "0x755f4b5c3452b7c983f630b0e613c7a0fb164c85",
+    "timestamp": 1773131065800,
+    "buyer": {
+      "name": "Siddharth Rao",
+      "wallet": "0x5e626108...ab7f",
+      "upiId": "siddharthrao@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0x1e77bbd6...d7ff",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN767118431"
+  },
+  {
+    "txId": "TX1JZM58CHM",
+    "symbol": "ICICIBANK",
+    "qty": 21,
+    "type": "BUY",
+    "price": 1236.08,
+    "total": 25957.68,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹25,957.68 · Wallet: 0xb1fea3b4...57cf",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x0470a3c4...cbc7 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 20 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "21 ICICIBANK shares settled",
+        "ms": 1870
+      }
+    ],
+    "settlementTime": 1.87,
+    "txHash": "0x3656789a127d1ea189d7dfe157ddba98d4f44f09",
+    "timestamp": 1773131188769,
+    "buyer": {
+      "name": "Rohan Verma",
+      "wallet": "0x7f01fbd8...b1ed",
+      "upiId": "rohanverma@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0xbe7678e1...f234",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "VWXYZ3456I",
+    "paymentRef": "TXN599429116"
+  },
+  {
+    "txId": "TXZIJ0CS2X9",
+    "symbol": "RELIANCE",
+    "qty": 16,
+    "type": "BUY",
+    "price": 3055.49,
+    "total": 48887.84,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹48,887.84 · Wallet: 0xb084160b...f0ba",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xeb97cb57...f2db · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 5 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "16 RELIANCE shares settled",
+        "ms": 1860
+      }
+    ],
+    "settlementTime": 1.86,
+    "txHash": "0x0127e98446bda34c0aeb9333a03a3f3b7ff69d3d",
+    "timestamp": 1773131633149,
+    "buyer": {
+      "name": "Vikram Singh",
+      "wallet": "0x69240b03...dd43",
+      "upiId": "vikramsingh@okicici"
+    },
+    "seller": {
+      "name": "Pooja Joshi",
+      "wallet": "0x579433c7...33df",
+      "upiId": "poojajoshi@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN898400768"
+  },
+  {
+    "txId": "TX3CDAMHETM",
+    "symbol": "TCS",
+    "qty": 3,
+    "type": "BUY",
+    "price": 3672.26,
+    "total": 11016.78,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹11,016.78 · Wallet: 0xdfdc5289...855c",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x478e383a...7b34 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 1 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "3 TCS shares settled",
+        "ms": 1960
+      }
+    ],
+    "settlementTime": 1.96,
+    "txHash": "0xaea4607be4cbae5804c742218fdc85cf904e32b0",
+    "timestamp": 1773131645285,
+    "buyer": {
+      "name": "Siddharth Rao",
+      "wallet": "0x22ce7722...3cf5",
+      "upiId": "siddharthrao@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0x14bef615...df51",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "ABCPQ7890J",
+    "paymentRef": "TXN521852333"
+  },
+  {
+    "txId": "TXYBAPC1RIC",
+    "symbol": "INFY",
+    "qty": 12,
+    "type": "BUY",
+    "price": 1538.01,
+    "total": 18456.12,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹18,456.12 · Wallet: 0x05e3a976...302f",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x287dbc3b...2037 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 2 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "12 INFY shares settled",
+        "ms": 3120
+      }
+    ],
+    "settlementTime": 3.12,
+    "txHash": "0x5c698f0327833b44163dcdab02f45ce12a096bd4",
+    "timestamp": 1773132301249,
+    "buyer": {
+      "name": "Pooja Joshi",
+      "wallet": "0x4a161454...3a83",
+      "upiId": "poojajoshi@okicici"
+    },
+    "seller": {
+      "name": "Shweta Bansal",
+      "wallet": "0x295b32b3...509f",
+      "upiId": "shwetabansal@upi"
+    },
+    "pan": "LMNOP9012H",
+    "paymentRef": "TXN119551210"
+  },
+  {
+    "txId": "TXHMLZ2W5VL",
+    "symbol": "TCS",
+    "qty": 40,
+    "type": "SELL",
+    "price": 3684.31,
+    "total": 147372.4,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,47,372.4 · Wallet: 0x084c7147...d421",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0x9f028886...e6b5 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 9 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "40 TCS shares settled",
+        "ms": 1940
+      }
+    ],
+    "settlementTime": 1.94,
+    "txHash": "0xd326886eb07405e65db753f67a475c74d2a1b14a",
+    "timestamp": 1773132422405,
+    "buyer": {
+      "name": "Priya Sharma",
+      "wallet": "0xd87b466d...8b37",
+      "upiId": "priyasharma@okicici"
+    },
+    "seller": {
+      "name": "Aditya Kumar",
+      "wallet": "0xd7cc6d09...9709",
+      "upiId": "adityakumar@upi"
+    },
+    "pan": "AABCD6789L",
+    "paymentRef": "TXN202610412"
+  }
+]

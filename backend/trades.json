@@ -1,0 +1,1626 @@
+[
+  {
+    "txId": "TXN317055330",
+    "symbol": "HDFCBANK",
+    "qty": 72,
+    "type": "sell",
+    "price": 1430.17,
+    "total": 102972.17,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.78,
+    "txHash": "0xea57b287a9d0901529d96403b6a231ded7f986d9",
+    "timestamp": 1773134039963,
+    "buyer": {
+      "name": "Fake Buyer 48",
+      "wallet": "0xfe7fe467eb1048dd1af41aa005fb186b15e38a6e",
+      "upiId": "buyer48@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 48",
+      "wallet": "0xdfd6562528a0d171b235c49e135cb7f3375445d9"
+    },
+    "pan": "ABCDE4379F",
+    "paymentRef": "REF765085845"
+  },
+  {
+    "txId": "TXN185559655",
+    "symbol": "RELIANCE",
+    "qty": 2,
+    "type": "buy",
+    "price": 2951.56,
+    "total": 5903.12,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 1.93,
+    "txHash": "0xe15186c582445e55ac03ad82214f1d00c77f9146",
+    "timestamp": 1773133877148,
+    "buyer": {
+      "name": "Fake Buyer 30",
+      "wallet": "0x627a94db3c01983c33b09894310ac9880e128c53",
+      "upiId": "buyer30@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 30",
+      "wallet": "0xb6c4883db93c0a325edc415538563e79ae56f6fc"
+    },
+    "pan": "ABCDE8822F",
+    "paymentRef": "REF653679099"
+  },
+  {
+    "txId": "TXN147026868",
+    "symbol": "RELIANCE",
+    "qty": 9,
+    "type": "sell",
+    "price": 2940.93,
+    "total": 26468.41,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.04,
+    "txHash": "0xe6a35f3a69d6f6f3e009207a431e8a6d68b25ba8",
+    "timestamp": 1773132472281,
+    "buyer": {
+      "name": "Fake Buyer 40",
+      "wallet": "0xde00457338ee0fe4b1b5a2bcf03c8530482101e6",
+      "upiId": "buyer40@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 40",
+      "wallet": "0x7778dcc1d64892d638973e3b864a497958cd6782"
+    },
+    "pan": "ABCDE8961F",
+    "paymentRef": "REF498907531"
+  },
+  {
+    "txId": "TXN958296553",
+    "symbol": "WIPRO",
+    "qty": 85,
+    "type": "buy",
+    "price": 528.89,
+    "total": 44955.65,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.94,
+    "txHash": "0x224a079836bab3f27e30277d0118922bfc611da1",
+    "timestamp": 1773132208663,
+    "buyer": {
+      "name": "Fake Buyer 46",
+      "wallet": "0xd4ca149e096774b242c6a3e7f178fac93b1cc12b",
+      "upiId": "buyer46@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 46",
+      "wallet": "0xa43e3ff2396897d01fecfef77ea9ef9312bb0443"
+    },
+    "pan": "ABCDE3157F",
+    "paymentRef": "REF77526582"
+  },
+  {
+    "txId": "TXN724808179",
+    "symbol": "TCS",
+    "qty": 20,
+    "type": "sell",
+    "price": 4145.69,
+    "total": 82913.75,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 1.95,
+    "txHash": "0xf399c1aab3970c2578b2eccc866cacaa32ae95c8",
+    "timestamp": 1773127612686,
+    "buyer": {
+      "name": "Fake Buyer 26",
+      "wallet": "0xc65f21b60ba4825ac839d7a0e834193d30a49524",
+      "upiId": "buyer26@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 26",
+      "wallet": "0x215da0548861e99acea572e54f4e19d0e434bca0"
+    },
+    "pan": "ABCDE5195F",
+    "paymentRef": "REF397092473"
+  },
+  {
+    "txId": "TXN911332074",
+    "symbol": "ICICIBANK",
+    "qty": 74,
+    "type": "buy",
+    "price": 1087.81,
+    "total": 80497.88,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.48,
+    "txHash": "0x6a2b0029a90b166b14a4d5ffd6ae30020ebcd1a0",
+    "timestamp": 1773125302216,
+    "buyer": {
+      "name": "Fake Buyer 41",
+      "wallet": "0x715c4c655d1330a1e5c8921e9b00319a8e3355df",
+      "upiId": "buyer41@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 41",
+      "wallet": "0x0f35119ff6b2c1cf6f3151c3574c63212dc8d551"
+    },
+    "pan": "ABCDE7244F",
+    "paymentRef": "REF879929101"
+  },
+  {
+    "txId": "TXN308673012",
+    "symbol": "RELIANCE",
+    "qty": 34,
+    "type": "sell",
+    "price": 2941.02,
+    "total": 99994.81,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.56,
+    "txHash": "0x3b6ee546cba3296739a5bd3017874a115f2df3f1",
+    "timestamp": 1773122334723,
+    "buyer": {
+      "name": "Fake Buyer 4",
+      "wallet": "0x3283cb4c411db13e9cb38b626ad937a2179fcc5c",
+      "upiId": "buyer4@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 4",
+      "wallet": "0x5c16dcf5bbb601ae4f9185820cfbe242fb3ecb16"
+    },
+    "pan": "ABCDE7991F",
+    "paymentRef": "REF207715580"
+  },
+  {
+    "txId": "TXN939441855",
+    "symbol": "HDFCBANK",
+    "qty": 80,
+    "type": "sell",
+    "price": 1433.55,
+    "total": 114683.7,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.69,
+    "txHash": "0xd66828b41f2579a9de0c3f2a3b726fb05159a4cd",
+    "timestamp": 1773121698101,
+    "buyer": {
+      "name": "Fake Buyer 38",
+      "wallet": "0x394d62529394d65c8e79a702a412048e5d6ce97a",
+      "upiId": "buyer38@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 38",
+      "wallet": "0xe381e4ba36faaae307e3be20efee3f9a6f3c4221"
+    },
+    "pan": "ABCDE1436F",
+    "paymentRef": "REF675946561"
+  },
+  {
+    "txId": "TXN62205368",
+    "symbol": "ICICIBANK",
+    "qty": 57,
+    "type": "buy",
+    "price": 1073.71,
+    "total": 61201.26,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.27,
+    "txHash": "0x14b64ae0236bfa974b10c5a7a3275e8b5e08ab59",
+    "timestamp": 1773120821073,
+    "buyer": {
+      "name": "Fake Buyer 13",
+      "wallet": "0xd41639efd4784edf3b770192d8d1b2d697148798",
+      "upiId": "buyer13@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 13",
+      "wallet": "0x65fd74568ac585e231568876ff9f72ccb077c758"
+    },
+    "pan": "ABCDE1359F",
+    "paymentRef": "REF918061659"
+  },
+  {
+    "txId": "TXN625618484",
+    "symbol": "RELIANCE",
+    "qty": 89,
+    "type": "buy",
+    "price": 2945.88,
+    "total": 262183.11,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.76,
+    "txHash": "0xa51a6bf3abf99b9f0adb062ee2fb117adcd7148c",
+    "timestamp": 1773120741046,
+    "buyer": {
+      "name": "Fake Buyer 32",
+      "wallet": "0x1e91411a84f016e80256c499ddb6bf0f1fb99207",
+      "upiId": "buyer32@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 32",
+      "wallet": "0x3cd678ddb5c35cce3b4b5a432791593ee8fd0863"
+    },
+    "pan": "ABCDE8250F",
+    "paymentRef": "REF958662868"
+  },
+  {
+    "txId": "TXN833199212",
+    "symbol": "HDFCBANK",
+    "qty": 52,
+    "type": "sell",
+    "price": 1438.33,
+    "total": 74793.06,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.4,
+    "txHash": "0x43d61fb1d45e0882eb4572412e94036e017c84c0",
+    "timestamp": 1773119448294,
+    "buyer": {
+      "name": "Fake Buyer 37",
+      "wallet": "0x387404edadf0c043bb8fe43e74e0e6a8f50b8ce1",
+      "upiId": "buyer37@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 37",
+      "wallet": "0x1b665d931fe3f6ee643f6648076510372c28c004"
+    },
+    "pan": "ABCDE7184F",
+    "paymentRef": "REF221150855"
+  },
+  {
+    "txId": "TXN355157579",
+    "symbol": "RELIANCE",
+    "qty": 53,
+    "type": "sell",
+    "price": 2959.45,
+    "total": 156850.95,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.87,
+    "txHash": "0x00b5a97c1feb837f76f9ebcf5aa08ec166c27f49",
+    "timestamp": 1773118229103,
+    "buyer": {
+      "name": "Fake Buyer 24",
+      "wallet": "0xd5a42da3430c93ce45b89a9ac5f479091bd29b68",
+      "upiId": "buyer24@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 24",
+      "wallet": "0xddc66fce698012b133e0b064c350cf2c5eb0b392"
+    },
+    "pan": "ABCDE4931F",
+    "paymentRef": "REF892130575"
+  },
+  {
+    "txId": "TXN249689697",
+    "symbol": "ICICIBANK",
+    "qty": 58,
+    "type": "sell",
+    "price": 1078.27,
+    "total": 62539.7,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.13,
+    "txHash": "0xc086cc3cd4db022df01b96613dc98ab02545a183",
+    "timestamp": 1773117278299,
+    "buyer": {
+      "name": "Fake Buyer 39",
+      "wallet": "0xca0e102143755d6d78404ed0dd026c4a55d9d081",
+      "upiId": "buyer39@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 39",
+      "wallet": "0xf4a59b496381ae3cb2a9a942db5ab650a29820c0"
+    },
+    "pan": "ABCDE8387F",
+    "paymentRef": "REF35459021"
+  },
+  {
+    "txId": "TXN993680997",
+    "symbol": "RELIANCE",
+    "qty": 15,
+    "type": "buy",
+    "price": 2950.63,
+    "total": 44259.48,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.61,
+    "txHash": "0xe190f6f476f6fb8e879314b5059517c0688b10c9",
+    "timestamp": 1773115769434,
+    "buyer": {
+      "name": "Fake Buyer 21",
+      "wallet": "0x6a0031dff6796d3d031481e9674a140da722b8fd",
+      "upiId": "buyer21@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 21",
+      "wallet": "0xdd34061a2784ecb4429bea5f428d0df3395bef7f"
+    },
+    "pan": "ABCDE9808F",
+    "paymentRef": "REF410718964"
+  },
+  {
+    "txId": "TXN119230401",
+    "symbol": "TCS",
+    "qty": 60,
+    "type": "sell",
+    "price": 4145.03,
+    "total": 248702.06,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.07,
+    "txHash": "0x25f6c14f7253f752953d1d18441d9d1fae80bf29",
+    "timestamp": 1773115736669,
+    "buyer": {
+      "name": "Fake Buyer 17",
+      "wallet": "0x8faccdfba802a0636813ceb7536820d844a5363c",
+      "upiId": "buyer17@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 17",
+      "wallet": "0x3115fd96abb5f197998fb280d40b5eb1a92cbc7a"
+    },
+    "pan": "ABCDE6603F",
+    "paymentRef": "REF398706594"
+  },
+  {
+    "txId": "TXN561037685",
+    "symbol": "TATAMOTORS",
+    "qty": 77,
+    "type": "buy",
+    "price": 945,
+    "total": 72764.74,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.57,
+    "txHash": "0xb0475a8839fbb167bc8358cf6fbf270dae1aa3e6",
+    "timestamp": 1773114591581,
+    "buyer": {
+      "name": "Fake Buyer 6",
+      "wallet": "0x85644fe01c1a71d4c00dbe134681570bf57c6283",
+      "upiId": "buyer6@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 6",
+      "wallet": "0xc3161b99cee53a1af61a80fd54699d5528369cbb"
+    },
+    "pan": "ABCDE7604F",
+    "paymentRef": "REF235463168"
+  },
+  {
+    "txId": "TXN242732224",
+    "symbol": "TATAMOTORS",
+    "qty": 94,
+    "type": "buy",
+    "price": 954.16,
+    "total": 89691.42,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 1.83,
+    "txHash": "0xb69cb00911f01b5660b6c43fdd51e68f1736aca1",
+    "timestamp": 1773112090321,
+    "buyer": {
+      "name": "Fake Buyer 9",
+      "wallet": "0x70b0ea2671348cff77747d6daf09a28a12779452",
+      "upiId": "buyer9@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 9",
+      "wallet": "0x7660b7216c838c8bfc73e1e7660378a36cfe7ea6"
+    },
+    "pan": "ABCDE5185F",
+    "paymentRef": "REF327100788"
+  },
+  {
+    "txId": "TXN206043198",
+    "symbol": "WIPRO",
+    "qty": 25,
+    "type": "buy",
+    "price": 522.87,
+    "total": 13071.64,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.08,
+    "txHash": "0x8bcbaf9284bb06ffb318f32177880ceb879ecd9e",
+    "timestamp": 1773111599340,
+    "buyer": {
+      "name": "Fake Buyer 45",
+      "wallet": "0x00cdfbc12b500f9594e71bb6d634bd3023ee363b",
+      "upiId": "buyer45@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 45",
+      "wallet": "0xeb1f2d4eb4ab44b00557fb2175e65b4390e96fcc"
+    },
+    "pan": "ABCDE7082F",
+    "paymentRef": "REF404085638"
+  },
+  {
+    "txId": "TXN24480066",
+    "symbol": "ICICIBANK",
+    "qty": 92,
+    "type": "buy",
+    "price": 1082.15,
+    "total": 99557.74,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.06,
+    "txHash": "0xdf7aab18f225508e84a0164495dec88e9cd4e48f",
+    "timestamp": 1773107514349,
+    "buyer": {
+      "name": "Fake Buyer 29",
+      "wallet": "0xad0274e4e64fdab1d709558108d4892dffbd1e22",
+      "upiId": "buyer29@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 29",
+      "wallet": "0x8048c3439c1abd274c9317197d73b036a15b8953"
+    },
+    "pan": "ABCDE9359F",
+    "paymentRef": "REF588078892"
+  },
+  {
+    "txId": "TXN433594725",
+    "symbol": "TATAMOTORS",
+    "qty": 71,
+    "type": "sell",
+    "price": 952.83,
+    "total": 67650.89,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 1.89,
+    "txHash": "0xfeee1973020b54b22f33f2cd6a6a68a2740ce09f",
+    "timestamp": 1773106717111,
+    "buyer": {
+      "name": "Fake Buyer 36",
+      "wallet": "0x82e7777c69e715f0a8e15ab6bbba722037b7ef79",
+      "upiId": "buyer36@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 36",
+      "wallet": "0x2f659044ad2722cb4fceb45b5dc370d1e569495a"
+    },
+    "pan": "ABCDE9376F",
+    "paymentRef": "REF785120193"
+  },
+  {
+    "txId": "TXN935945663",
+    "symbol": "ICICIBANK",
+    "qty": 89,
+    "type": "sell",
+    "price": 1085.07,
+    "total": 96571.44,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.2,
+    "txHash": "0x2b55df7abc66604a9ae3671f8a03e9e7be3faeb4",
+    "timestamp": 1773105113880,
+    "buyer": {
+      "name": "Fake Buyer 23",
+      "wallet": "0x29b368b81c3ace18c032b27d2fc402dc62f58c8d",
+      "upiId": "buyer23@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 23",
+      "wallet": "0xa8090ab307ee3ceb2ce8221b0c5ad8e78806cdeb"
+    },
+    "pan": "ABCDE3501F",
+    "paymentRef": "REF712956104"
+  },
+  {
+    "txId": "TXN235570163",
+    "symbol": "TCS",
+    "qty": 71,
+    "type": "buy",
+    "price": 4156.9,
+    "total": 295139.98,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.73,
+    "txHash": "0xc6eeb521561ea268e67a1d6a997279a59d7f6f35",
+    "timestamp": 1773104709593,
+    "buyer": {
+      "name": "Fake Buyer 22",
+      "wallet": "0x3fd36eb4c163ca9379d50de41f281fd0551913a2",
+      "upiId": "buyer22@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 22",
+      "wallet": "0x288e3f2b50f7aacc3bc35bf62267ff1a74f3920c"
+    },
+    "pan": "ABCDE3192F",
+    "paymentRef": "REF864187855"
+  },
+  {
+    "txId": "TXN453092904",
+    "symbol": "INFY",
+    "qty": 73,
+    "type": "buy",
+    "price": 1672.22,
+    "total": 122072.13,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.11,
+    "txHash": "0x2138842ad5158eefd36886134c5b8ec24ccf694d",
+    "timestamp": 1773102346544,
+    "buyer": {
+      "name": "Fake Buyer 28",
+      "wallet": "0xfacca1cca44adf678e8c31f5583fbe4702f49349",
+      "upiId": "buyer28@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 28",
+      "wallet": "0xded8af0136b66acb800ffbbfb31293fa022d8e2c"
+    },
+    "pan": "ABCDE2993F",
+    "paymentRef": "REF109520188"
+  },
+  {
+    "txId": "TXN659950763",
+    "symbol": "RELIANCE",
+    "qty": 2,
+    "type": "sell",
+    "price": 2943.04,
+    "total": 5886.09,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.52,
+    "txHash": "0x2c7a0257f469615a8ee9d32cf5e3e212b17428ea",
+    "timestamp": 1773098240163,
+    "buyer": {
+      "name": "Fake Buyer 42",
+      "wallet": "0xda5162914dbbfb6fb3f53a11163085253a2a29e5",
+      "upiId": "buyer42@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 42",
+      "wallet": "0x2764dc0cda4df4d576b1f0f362cce448ad563224"
+    },
+    "pan": "ABCDE7965F",
+    "paymentRef": "REF287269325"
+  },
+  {
+    "txId": "TXN374019540",
+    "symbol": "INFY",
+    "qty": 13,
+    "type": "buy",
+    "price": 1682.19,
+    "total": 21868.43,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.33,
+    "txHash": "0x53a389ac735c0d27cc95b8a4171bc312c645335b",
+    "timestamp": 1773096146400,
+    "buyer": {
+      "name": "Fake Buyer 43",
+      "wallet": "0x9cee99121aead60818ac3e2c364718ec0a20ddf1",
+      "upiId": "buyer43@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 43",
+      "wallet": "0xd2ca19bb28ef4381c11f0040833c42b281529485"
+    },
+    "pan": "ABCDE1930F",
+    "paymentRef": "REF62774697"
+  },
+  {
+    "txId": "TXN955607900",
+    "symbol": "RELIANCE",
+    "qty": 16,
+    "type": "sell",
+    "price": 2959.79,
+    "total": 47356.67,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.66,
+    "txHash": "0x78f74de94343154252ee11e176c3a2e6f13e05fe",
+    "timestamp": 1773092608122,
+    "buyer": {
+      "name": "Fake Buyer 49",
+      "wallet": "0xa0eaa3eb7e664bc816981027f0aa294bd4b2a17e",
+      "upiId": "buyer49@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 49",
+      "wallet": "0x0927a271afd52187a8e0b6eab7d3fa0067f81014"
+    },
+    "pan": "ABCDE1991F",
+    "paymentRef": "REF515922888"
+  },
+  {
+    "txId": "TXN227557066",
+    "symbol": "TATAMOTORS",
+    "qty": 85,
+    "type": "sell",
+    "price": 947.73,
+    "total": 80557.35,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.82,
+    "txHash": "0xb82b3393eac639f20fc1e90e33e5ab950ea0f254",
+    "timestamp": 1773088539916,
+    "buyer": {
+      "name": "Fake Buyer 34",
+      "wallet": "0xedf8abd9cad85e4dd436c6a11f6ed352c0c6078e",
+      "upiId": "buyer34@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 34",
+      "wallet": "0x83f4d6c5c8f8ee57ff6249c2875f95fa59fba0c8"
+    },
+    "pan": "ABCDE6111F",
+    "paymentRef": "REF902179715"
+  },
+  {
+    "txId": "TXN546370579",
+    "symbol": "INFY",
+    "qty": 64,
+    "type": "sell",
+    "price": 1673.46,
+    "total": 107101.18,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.54,
+    "txHash": "0xd46bb0e652116c9880730a310e393de04435c4d7",
+    "timestamp": 1773085370906,
+    "buyer": {
+      "name": "Fake Buyer 31",
+      "wallet": "0x90cac857a82c388acfb3d913069d8f2bbe2c79b2",
+      "upiId": "buyer31@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 31",
+      "wallet": "0xfc422d080bef49f8478e452cbcff9bd9febfbcce"
+    },
+    "pan": "ABCDE5332F",
+    "paymentRef": "REF341197345"
+  },
+  {
+    "txId": "TXN819867573",
+    "symbol": "TATAMOTORS",
+    "qty": 49,
+    "type": "buy",
+    "price": 944.82,
+    "total": 46296.39,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.1,
+    "txHash": "0x3103241d8adba4266ee2f3b5ea6ea0a655e8b34b",
+    "timestamp": 1773084787301,
+    "buyer": {
+      "name": "Fake Buyer 18",
+      "wallet": "0xf75d3bee8345384455901b7cdba5b06eae48c389",
+      "upiId": "buyer18@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 18",
+      "wallet": "0x7383161c00178f202d441fbd7f639ba799a81bf0"
+    },
+    "pan": "ABCDE7900F",
+    "paymentRef": "REF108570437"
+  },
+  {
+    "txId": "TXN116086658",
+    "symbol": "WIPRO",
+    "qty": 29,
+    "type": "sell",
+    "price": 514.75,
+    "total": 14927.66,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.15,
+    "txHash": "0xd83018c7b9435746e03378230a1f2e9b0caa2136",
+    "timestamp": 1773084430969,
+    "buyer": {
+      "name": "Fake Buyer 20",
+      "wallet": "0xcb1d9e7bae119bd48926bb4c9ab32573df084082",
+      "upiId": "buyer20@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 20",
+      "wallet": "0x232c9141c2c8f238530a596865a351e5f9367456"
+    },
+    "pan": "ABCDE9823F",
+    "paymentRef": "REF506339796"
+  },
+  {
+    "txId": "TXN961786587",
+    "symbol": "TATAMOTORS",
+    "qty": 96,
+    "type": "sell",
+    "price": 954.55,
+    "total": 91637.11,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.9,
+    "txHash": "0xd8700691d60cb5c1d10f42e4acf6f01d988f818b",
+    "timestamp": 1773083593181,
+    "buyer": {
+      "name": "Fake Buyer 14",
+      "wallet": "0x32e8ba8bfa62ab11b273d2d0f5afce2ebd23a3a2",
+      "upiId": "buyer14@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 14",
+      "wallet": "0xc26b8620e1465f5a6ad0403d8834e4ab6507cfdb"
+    },
+    "pan": "ABCDE3245F",
+    "paymentRef": "REF602430594"
+  },
+  {
+    "txId": "TXN433511838",
+    "symbol": "ICICIBANK",
+    "qty": 40,
+    "type": "sell",
+    "price": 1077.12,
+    "total": 43084.63,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 1.93,
+    "txHash": "0xe627364ebde3f1f42d3891b91508ae5e57e59f3f",
+    "timestamp": 1773083586597,
+    "buyer": {
+      "name": "Fake Buyer 2",
+      "wallet": "0xe2b385cc4bed64a0354727e5182dc6f96a737a0e",
+      "upiId": "buyer2@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 2",
+      "wallet": "0x84c02f8eaa6e13b6110d41719b1597c4f2bebfce"
+    },
+    "pan": "ABCDE1511F",
+    "paymentRef": "REF193418603"
+  },
+  {
+    "txId": "TXN823016421",
+    "symbol": "INFY",
+    "qty": 81,
+    "type": "buy",
+    "price": 1688.06,
+    "total": 136733,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.28,
+    "txHash": "0x327014ba2b5009d82eb691d02e49fa0102ed1cf0",
+    "timestamp": 1773079981839,
+    "buyer": {
+      "name": "Fake Buyer 27",
+      "wallet": "0x72519f5e82533f515f1bd7b93d370f764ca38d24",
+      "upiId": "buyer27@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 27",
+      "wallet": "0x909198bba7f532931902cc3d533b93117116d041"
+    },
+    "pan": "ABCDE8809F",
+    "paymentRef": "REF320384219"
+  },
+  {
+    "txId": "TXN940390415",
+    "symbol": "HDFCBANK",
+    "qty": 56,
+    "type": "buy",
+    "price": 1421.36,
+    "total": 79596.19,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.9,
+    "txHash": "0xc4f15a8fc394c758a5fb7177d77241dd83f45230",
+    "timestamp": 1773077206497,
+    "buyer": {
+      "name": "Fake Buyer 1",
+      "wallet": "0x7b51e1ebd99cf6064efe9bd0a8d11990357c76b3",
+      "upiId": "buyer1@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 1",
+      "wallet": "0x428ce2a9b123bc1aed668f86db7b91af680aae23"
+    },
+    "pan": "ABCDE5509F",
+    "paymentRef": "REF82746344"
+  },
+  {
+    "txId": "TXN643619954",
+    "symbol": "TCS",
+    "qty": 72,
+    "type": "sell",
+    "price": 4149.44,
+    "total": 298759.79,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.45,
+    "txHash": "0x3cc0cc8376b953285963469578c164a6d9f8f8f2",
+    "timestamp": 1773076042211,
+    "buyer": {
+      "name": "Fake Buyer 33",
+      "wallet": "0x001b9e42306f4d47af2003d9227d1777f8b48391",
+      "upiId": "buyer33@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 33",
+      "wallet": "0x81aade30fb4307c93c2522fee8464ce365c2a676"
+    },
+    "pan": "ABCDE7704F",
+    "paymentRef": "REF247063149"
+  },
+  {
+    "txId": "TXN94148407",
+    "symbol": "TCS",
+    "qty": 95,
+    "type": "sell",
+    "price": 4140.11,
+    "total": 393310.46,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.83,
+    "txHash": "0xdc706ba421599ff45df92414d834f7ccc1ed60a8",
+    "timestamp": 1773074396152,
+    "buyer": {
+      "name": "Fake Buyer 47",
+      "wallet": "0x816129bde196ed711fa38deec16aa64e576a1273",
+      "upiId": "buyer47@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 47",
+      "wallet": "0x7ab827c58a1a6575e0cd0b3787ff61675bdecd03"
+    },
+    "pan": "ABCDE8584F",
+    "paymentRef": "REF69218629"
+  },
+  {
+    "txId": "TXN729027603",
+    "symbol": "ICICIBANK",
+    "qty": 70,
+    "type": "sell",
+    "price": 1073.23,
+    "total": 75125.88,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.85,
+    "txHash": "0x2167b37884e6bc3eb681a9c6448438b92e4b27f2",
+    "timestamp": 1773073939836,
+    "buyer": {
+      "name": "Fake Buyer 5",
+      "wallet": "0x5bba981497bdddd0449eabdf7984fc209d433003",
+      "upiId": "buyer5@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 5",
+      "wallet": "0x897fe2936d440599b2790ed541fb1e80358013bc"
+    },
+    "pan": "ABCDE2097F",
+    "paymentRef": "REF45338019"
+  },
+  {
+    "txId": "TXN332023508",
+    "symbol": "INFY",
+    "qty": 56,
+    "type": "buy",
+    "price": 1679.39,
+    "total": 94045.76,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.09,
+    "txHash": "0x30acc1c74fb7a4a008e9188d7363cb8adc3c4de6",
+    "timestamp": 1773072568884,
+    "buyer": {
+      "name": "Fake Buyer 0",
+      "wallet": "0x6c86a58c9c8720568ed243092561b95eb479bf34",
+      "upiId": "buyer0@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 0",
+      "wallet": "0xbea76a27a79fa78a70dc8f6424ef18c7b036b969"
+    },
+    "pan": "ABCDE3284F",
+    "paymentRef": "REF108995849"
+  },
+  {
+    "txId": "TXN320308729",
+    "symbol": "HDFCBANK",
+    "qty": 97,
+    "type": "sell",
+    "price": 1428.66,
+    "total": 138580.34,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.79,
+    "txHash": "0x9fff6d25aa41aa96afe785629546949b479bb31a",
+    "timestamp": 1773071033110,
+    "buyer": {
+      "name": "Fake Buyer 44",
+      "wallet": "0x254f12e5b31ba67f42e044f140f1de02c4d47109",
+      "upiId": "buyer44@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 44",
+      "wallet": "0x69f8b7d02d8fb62b36442d8c6e970db31f219437"
+    },
+    "pan": "ABCDE6738F",
+    "paymentRef": "REF815252666"
+  },
+  {
+    "txId": "TXN858166640",
+    "symbol": "TCS",
+    "qty": 85,
+    "type": "sell",
+    "price": 4155.65,
+    "total": 353230.12,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.59,
+    "txHash": "0x768ba35678572794b811f7671ac5a0d4ad8de474",
+    "timestamp": 1773069377095,
+    "buyer": {
+      "name": "Fake Buyer 19",
+      "wallet": "0x528a880a11d54268e28d39bf346cc707975f5359",
+      "upiId": "buyer19@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 19",
+      "wallet": "0x705a9d8fe4075291d6fd76714aa75feed3286776"
+    },
+    "pan": "ABCDE7255F",
+    "paymentRef": "REF172684901"
+  },
+  {
+    "txId": "TXN333166727",
+    "symbol": "ICICIBANK",
+    "qty": 30,
+    "type": "buy",
+    "price": 1082.5,
+    "total": 32474.98,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.5,
+    "txHash": "0x95e681c4a99c95c5dcf7839044bc2a6c2c1c0efa",
+    "timestamp": 1773066970047,
+    "buyer": {
+      "name": "Fake Buyer 15",
+      "wallet": "0xf8ccf860272a43f8cfa54b2ac853744e93aed7b6",
+      "upiId": "buyer15@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 15",
+      "wallet": "0xa8c5e19de35e355bfe3033ee92719172e2b19e30"
+    },
+    "pan": "ABCDE3110F",
+    "paymentRef": "REF189433102"
+  },
+  {
+    "txId": "TXN73259545",
+    "symbol": "ICICIBANK",
+    "qty": 29,
+    "type": "sell",
+    "price": 1084.66,
+    "total": 31455.24,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.32,
+    "txHash": "0xf8389fbcc1c0da9f2ecf8f78b7dbdaf4d591c561",
+    "timestamp": 1773061597641,
+    "buyer": {
+      "name": "Fake Buyer 25",
+      "wallet": "0x6fb636fd080bb8e908b66b652cc54cda29af0cdc",
+      "upiId": "buyer25@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 25",
+      "wallet": "0x0aad96afcaec38451a5aa7eba10f21391af2bc92"
+    },
+    "pan": "ABCDE6628F",
+    "paymentRef": "REF289416169"
+  },
+  {
+    "txId": "TXN787064663",
+    "symbol": "HDFCBANK",
+    "qty": 26,
+    "type": "buy",
+    "price": 1431.49,
+    "total": 37218.65,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.19,
+    "txHash": "0x11d74269e6c04338f1cc3f82c759b21ecca99425",
+    "timestamp": 1773061123802,
+    "buyer": {
+      "name": "Fake Buyer 16",
+      "wallet": "0xe57b8bbd9a88c961d4cdbf9a31276cdc746446b4",
+      "upiId": "buyer16@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 16",
+      "wallet": "0x1e54db0d7139b3bacf231130fde38bc526b1f93a"
+    },
+    "pan": "ABCDE9377F",
+    "paymentRef": "REF519124961"
+  },
+  {
+    "txId": "TXN193817615",
+    "symbol": "TATAMOTORS",
+    "qty": 55,
+    "type": "buy",
+    "price": 953.06,
+    "total": 52418.57,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 1.9,
+    "txHash": "0x38f9cb8decac6dc0e903f537ec47e2146136a3dd",
+    "timestamp": 1773059967556,
+    "buyer": {
+      "name": "Fake Buyer 10",
+      "wallet": "0xde72b4aba91a0ca009f6b82db37ccbc4a57c6d65",
+      "upiId": "buyer10@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 10",
+      "wallet": "0xc7b6686450d836085ffa82535e4a0d666190b80b"
+    },
+    "pan": "ABCDE5725F",
+    "paymentRef": "REF900435790"
+  },
+  {
+    "txId": "TXN924505827",
+    "symbol": "ICICIBANK",
+    "qty": 53,
+    "type": "sell",
+    "price": 1087.97,
+    "total": 57662.36,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.91,
+    "txHash": "0x213ef608777b6a5b2d22ddc114c4813f8dee84e2",
+    "timestamp": 1773059648790,
+    "buyer": {
+      "name": "Fake Buyer 7",
+      "wallet": "0x36b5dc0a1f2d6f42f4597654a1a45901d5e61635",
+      "upiId": "buyer7@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 7",
+      "wallet": "0x897f9733b16c7d4b12fb28f12384d17d5edf13a2"
+    },
+    "pan": "ABCDE8745F",
+    "paymentRef": "REF198544356"
+  },
+  {
+    "txId": "TXN97008209",
+    "symbol": "WIPRO",
+    "qty": 64,
+    "type": "sell",
+    "price": 517.86,
+    "total": 33143.35,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 1.89,
+    "txHash": "0xa9863a300371835f14652bef096938e6406b313e",
+    "timestamp": 1773059389870,
+    "buyer": {
+      "name": "Fake Buyer 11",
+      "wallet": "0x92b4ad1e600ef13e1b134fb41f361aa300bc29bd",
+      "upiId": "buyer11@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 11",
+      "wallet": "0xb2f539417d148df41d8e2f3ac341f4dfc331f9ae"
+    },
+    "pan": "ABCDE6909F",
+    "paymentRef": "REF274856449"
+  },
+  {
+    "txId": "TXN643374975",
+    "symbol": "ICICIBANK",
+    "qty": 60,
+    "type": "sell",
+    "price": 1088.05,
+    "total": 65282.98,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.09,
+    "txHash": "0x05ba161cd01a8f3cd40bd30ff81733cdcc855d23",
+    "timestamp": 1773056427561,
+    "buyer": {
+      "name": "Fake Buyer 8",
+      "wallet": "0xbecae7c82c93f6f119dbd55acc1dbfa5c62055f2",
+      "upiId": "buyer8@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 8",
+      "wallet": "0x323b9caabc44d59d3c11b586235641605b147a68"
+    },
+    "pan": "ABCDE2167F",
+    "paymentRef": "REF700978763"
+  },
+  {
+    "txId": "TXN535991511",
+    "symbol": "INFY",
+    "qty": 50,
+    "type": "sell",
+    "price": 1687.01,
+    "total": 84350.72,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.85,
+    "txHash": "0xf0c293dc10995077fcd71883298c08459c4c56d3",
+    "timestamp": 1773056281394,
+    "buyer": {
+      "name": "Fake Buyer 35",
+      "wallet": "0x7e1180ea28f09859b6f798ed96aa564a64c91df7",
+      "upiId": "buyer35@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 35",
+      "wallet": "0xa769f5f59b1ec94db4be0402c66445affc2ca3b5"
+    },
+    "pan": "ABCDE7572F",
+    "paymentRef": "REF986752999"
+  },
+  {
+    "txId": "TXN85109237",
+    "symbol": "ICICIBANK",
+    "qty": 95,
+    "type": "buy",
+    "price": 1073.76,
+    "total": 102007.45,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 3.05,
+    "txHash": "0x0391b3da69606ede9f1d92d4b7ba64bb65200a4b",
+    "timestamp": 1773051184826,
+    "buyer": {
+      "name": "Fake Buyer 3",
+      "wallet": "0x63bbb97c03183b3cb7fcb2a51eb01a21711651a3",
+      "upiId": "buyer3@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 3",
+      "wallet": "0x62ecb4b550c2b7b156e2e5c17d0bb6925fec9ec7"
+    },
+    "pan": "ABCDE9745F",
+    "paymentRef": "REF389451492"
+  },
+  {
+    "txId": "TXN247706762",
+    "symbol": "WIPRO",
+    "qty": 74,
+    "type": "buy",
+    "price": 527.06,
+    "total": 39002.7,
+    "status": "settled",
+    "steps": [],
+    "settlementTime": 2.05,
+    "txHash": "0x864ab4b23520d0920ed69a400842268825358449",
+    "timestamp": 1773048605142,
+    "buyer": {
+      "name": "Fake Buyer 12",
+      "wallet": "0xccc67f51aea9bcfa517e20fa2a48bf063538c899",
+      "upiId": "buyer12@okicici"
+    },
+    "seller": {
+      "name": "Fake Seller 12",
+      "wallet": "0xf4a0a08b10d39c86b23f5629eca0719a95a04291"
+    },
+    "pan": "ABCDE7055F",
+    "paymentRef": "REF798953352"
+  },
+  {
+    "txId": "a870e823-9b66-4b20-bc22-1e2d86f1b4ad",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3015.8671672924693,
+    "total": 30158.67167292469,
+    "status": "pending",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": null,
+    "timestamp": 1773156019908,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN127987201"
+  },
+  {
+    "txId": "df467019-d4ed-4a96-968d-e1671499a8ef",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3015.8671672924693,
+    "total": 30158.67167292469,
+    "status": "pending",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": null,
+    "timestamp": 1773156053570,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN753548562"
+  },
+  {
+    "txId": "c6d6ecaa-5201-4813-bbad-f50454f2a962",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3015.8671672924693,
+    "total": 30158.67167292469,
+    "status": "pending",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": null,
+    "timestamp": 1773156193644,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN696086202"
+  },
+  {
+    "txId": "0b1b0f03-e5cc-4796-aa19-ac6c7c733b85",
+    "symbol": "TCS",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3735.42275707037,
+    "total": 37354.227570703704,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹37,354.228 · Wallet: 0xAM...4f2c",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xBR...8a91 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 10 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "10 TCS shares in your portfolio",
+        "ms": 2300
+      }
+    ],
+    "settlementTime": 2.31,
+    "txHash": "0xefe3f1f1fc824",
+    "timestamp": 1773156227881,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN769947542"
+  },
+  {
+    "txId": "cb1d2720-d5d0-480a-af81-0b8f23cc665c",
+    "symbol": "TCS",
+    "qty": 30,
+    "type": "BUY",
+    "price": 3735.100377062918,
+    "total": 112053.01131188755,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹1,12,053.011 · Wallet: 0xAM...4f2c",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xBR...8a91 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 40 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "30 TCS shares in your portfolio",
+        "ms": 2300
+      }
+    ],
+    "settlementTime": 2.31,
+    "txHash": "0x03a7b476e774e8",
+    "timestamp": 1773156286240,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN636248666"
+  },
+  {
+    "txId": "bd2f80f3-4cb4-4bf9-9dab-59b858a5e250",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "SELL",
+    "price": 3015.4787929049867,
+    "total": 30154.787929049868,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹30,154.788 · Wallet: 0xAM...4f2c",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xBR...8a91 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 10 shares · Gas saved: 80%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "10 RELIANCE shares in your portfolio",
+        "ms": 2300
+      }
+    ],
+    "settlementTime": 2.31,
+    "txHash": "0xa913a73d0833",
+    "timestamp": 1773156680511,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN237928650"
+  },
+  {
+    "txId": "e281619f-b56c-43bb-a0de-42b36b8a0c6c",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3016.753763640824,
+    "total": 30167.53763640824,
+    "status": "settled",
+    "steps": [
+      {
+        "step": 1,
+        "label": "Funds Locked in Smart Contract",
+        "detail": "₹30,167.538 · Wallet: 0xAM...4f2c",
+        "ms": 0
+      },
+      {
+        "step": 2,
+        "label": "Counterparty Verified",
+        "detail": "Seller: 0xBR...8a91 · KYC confirmed",
+        "ms": 600
+      },
+      {
+        "step": 3,
+        "label": "Netting Engine Computed",
+        "detail": "Delta: 2 shares · Gas saved: 100%",
+        "ms": 1100
+      },
+      {
+        "step": 4,
+        "label": "Atomic Swap Executing",
+        "detail": "Simultaneous: money ↔ shares",
+        "ms": 1700
+      },
+      {
+        "step": 5,
+        "label": "Settlement Complete",
+        "detail": "10 RELIANCE shares in your portfolio",
+        "ms": 2300
+      }
+    ],
+    "settlementTime": 2.31,
+    "txHash": "0x05e8bb2d8b0f48",
+    "timestamp": 1773156850581,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN769023740"
+  },
+  {
+    "txId": "4c472c74-6b0e-4e26-831f-979b263499f1",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3017.58042462553,
+    "total": 30175.804246255302,
+    "status": "pending",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": null,
+    "timestamp": 1773158356925,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN686666076"
+  },
+  {
+    "txId": "ce648e45-5cf4-4bb3-b6f2-4664e79fd2e9",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3017.58042462553,
+    "total": 30175.804246255302,
+    "status": "pending",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": null,
+    "timestamp": 1773158374240,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN469451635"
+  },
+  {
+    "txId": "6edd9658-271c-4ec0-9851-9c75b30c8311",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3017.58042462553,
+    "total": 30175.804246255302,
+    "status": "executing",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": "0x2df44be7c8b73",
+    "timestamp": 1773158399549,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN743453517"
+  },
+  {
+    "txId": "bfdc0c2c-0d7f-41b8-9685-2bd865ee5124",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3015.813085165115,
+    "total": 30158.13085165115,
+    "status": "executing",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": "0xee514b3639067992edd48bbdaa23fc6422622cbf",
+    "timestamp": 1773162267157,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN681700133"
+  },
+  {
+    "txId": "f81502c8-fa34-4526-b713-147258ccf51a",
+    "symbol": "ICICIBANK",
+    "qty": 10,
+    "type": "BUY",
+    "price": 1248.6626854913347,
+    "total": 12486.626854913347,
+    "status": "executing",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": "0xf69f54715ef55eda2dbadf28e81c59f97e4562d3",
+    "timestamp": 1773163228355,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN757276751"
+  },
+  {
+    "txId": "2da4e46a-2123-4388-8c18-a28df124410a",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3018.3921530952007,
+    "total": 30183.921530952008,
+    "status": "executing",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": "0xd9dd044a2b02ff99e981b5f93d0b902f5ac5727c",
+    "timestamp": 1773163486760,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN898033628"
+  },
+  {
+    "txId": "ba9d2b7a-54c7-4307-91ed-cb11f62eafef",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "BUY",
+    "price": 3016.387691682941,
+    "total": 30163.87691682941,
+    "status": "executing",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": "0x978bbce331f75452a96fa8103e6bbc2141790ce11e4f2656eb6f61cf01db3946",
+    "timestamp": 1773163699417,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN774276853"
+  },
+  {
+    "txId": "eddf3196-5ffc-4017-b285-f3a4087b5114",
+    "symbol": "RELIANCE",
+    "qty": 10,
+    "type": "SELL",
+    "price": 3019.304859759219,
+    "total": 30193.04859759219,
+    "status": "executing",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": "0x2f03a6e6a7bbab1fb01d8518e2d349e49a0ebe359aead27b881f41d05159f372",
+    "timestamp": 1773166502065,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN673311722"
+  }
+]
