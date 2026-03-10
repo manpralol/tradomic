@@ -6,7 +6,7 @@ export async function submitTrade({ symbol, qty, type }) {
 }
 
 export async function initiatePayment({ symbol, qty, type, price }) {
-    const res = await fetch('http://localhost:5000/api/payment/initiate', {
+    const res = await fetch('http://https://tradomic-backend.onrender.com/api/payment/initiate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ symbol, qty, type, price })
@@ -15,7 +15,7 @@ export async function initiatePayment({ symbol, qty, type, price }) {
 }
 
 export async function verifyPayment({ txId, otp, pan, password }) {
-    const res = await fetch('http://localhost:5000/api/payment/verify', {
+    const res = await fetch('http://https://tradomic-backend.onrender.com/api/payment/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ txId, otp, pan, password })
@@ -25,7 +25,7 @@ export async function verifyPayment({ txId, otp, pan, password }) {
 
 export function subscribeToTrade(txId, onStep, onComplete) {
     // REAL WebSocket ws://localhost:5000/trade/:txId
-    const ws = new WebSocket(`ws://localhost:5000/trade/${txId}`);
+    const ws = new WebSocket(`ws://https://tradomic-backend.onrender.com/trade/${txId}`);
 
     ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
