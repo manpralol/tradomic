@@ -1,12 +1,14 @@
+const BASE = 'https://tradomic-backend.onrender.com';
+const WS_BASE = 'wss://tradomic-backend.onrender.com';
+
 export async function submitTrade({ symbol, qty, type }) {
-    // Stubbed — will become: POST http://localhost:5000/api/trade
     return new Promise(resolve =>
         setTimeout(() => resolve({ txId: 'mock-tx-' + Date.now() }), 300)
     );
 }
 
 export async function initiatePayment({ symbol, qty, type, price }) {
-    const res = await fetch('http://https://tradomic-backend.onrender.com/api/payment/initiate', {
+    const res = await fetch(`${BASE}/api/payment/initiate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ symbol, qty, type, price })
@@ -15,7 +17,7 @@ export async function initiatePayment({ symbol, qty, type, price }) {
 }
 
 export async function verifyPayment({ txId, otp, pan, password }) {
-    const res = await fetch('http://https://tradomic-backend.onrender.com/api/payment/verify', {
+    const res = await fetch(`${BASE}/api/payment/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ txId, otp, pan, password })
@@ -24,8 +26,7 @@ export async function verifyPayment({ txId, otp, pan, password }) {
 }
 
 export function subscribeToTrade(txId, onStep, onComplete) {
-    // REAL WebSocket ws://localhost:5000/trade/:txId
-    const ws = new WebSocket(`ws://https://tradomic-backend.onrender.com/trade/${txId}`);
+    const ws = new WebSocket(`${WS_BASE}/trade/${txId}`);
 
     ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
