@@ -161,4 +161,4 @@ Frontend is a static React build, deployable on Vercel, Netlify, or Render Stati
 
 ---
 
-Built for the Tradomic Hackathon, March 2026.
+Built for HORIZON 1.0, March 2026.
