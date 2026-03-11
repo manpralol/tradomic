@@ -104,25 +104,25 @@ wss.on('connection', (ws, req) => {
                 step: 2,
                 label: 'Counterparty Verified',
                 detail: 'Seller: 0xBR...8a91 · KYC confirmed',
-                ms: 600
+                ms: 400
             },
             {
                 step: 3,
                 label: 'Netting Engine Computed',
                 detail: `Delta: ${netQty} shares · Gas saved: ${savingsPct}%`,
-                ms: 1100
+                ms: 800
             },
             {
                 step: 4,
                 label: 'Atomic Swap Executing',
                 detail: 'Simultaneous: money ↔ shares',
-                ms: 1700
+                ms: 1200
             },
             {
                 step: 5,
                 label: 'Settlement Complete',
                 detail: `${trade.qty} ${trade.symbol} shares in your portfolio`,
-                ms: 2300
+                ms: 1800
             }
         ];
 
@@ -142,7 +142,7 @@ wss.on('connection', (ws, req) => {
                     setTimeout(() => {
                         if (ws.readyState !== WebSocket.OPEN) return;
 
-                        const settlementTime = 2.31;
+                        const settlementTime = 2.3;
                         // Re-use txHash already set by payment/verify, or generate one
                         const currentTrade = tradeStore.getTradeById(txId);
                         const txHash = (currentTrade && currentTrade.txHash)

@@ -1,5 +1,5 @@
-const BASE = 'https://tradomic-backend.onrender.com';
-const WS_BASE = 'wss://tradomic-backend.onrender.com';
+const BASE = 'http://localhost:5000';
+const WS_BASE = 'ws://localhost:5000';
 
 export async function submitTrade({ symbol, qty, type }) {
     return new Promise(resolve =>

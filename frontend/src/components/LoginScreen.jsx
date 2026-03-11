@@ -30,11 +30,12 @@ export default function LoginScreen() {
             overflowX: 'hidden'
         }}>
             {/* Hero Section */}
-            <div style={{ display: 'flex', minHeight: '100vh', width: '100%' }}>
+            <div style={{ display: 'flex', minHeight: '100vh', width: '100%', alignItems: 'center' }}>
                 {/* Left Side */}
                 <div style={{
                     flex: '0 0 55%',
                     padding: '10vh 8vw',
+                    paddingTop: '80px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -62,13 +63,13 @@ export default function LoginScreen() {
                     <div style={{
                         fontFamily: "'Syne', sans-serif",
                         fontWeight: 700,
-                        fontSize: '52px',
+                        fontSize: '44px',
                         lineHeight: '1.1',
                         color: 'white',
                         marginBottom: '20px'
                     }}>
                         India locks<br />
-                        <span style={{ fontFamily: "'Bricolage Grotesque', monospace", fontSize: '72px', fontWeight: 800, color: 'var(--accent)' }}>₹{counter} Crore</span><br />
+                        <span style={{ fontFamily: "'Bricolage Grotesque', monospace", fontSize: '64px', fontWeight: 800, color: 'var(--accent)' }}>₹{counter} Crore</span><br />
                         daily.
                     </div>
 
@@ -85,7 +86,7 @@ export default function LoginScreen() {
                             <span style={{ fontFamily: "'DM Sans', sans-serif", color: 'var(--text-muted)', fontSize: '16px' }}>
                                 We settle in{' '}
                             </span>
-                            <span style={{ fontFamily: "'Bricolage Grotesque', monospace", color: 'var(--accent)', fontSize: '36px', fontWeight: 800 }}>
+                            <span style={{ fontFamily: "'Bricolage Grotesque', monospace", color: 'var(--accent)', fontSize: '32px', fontWeight: 800 }}>
                                 2.31 seconds.
                             </span>
                         </div>
@@ -125,7 +126,7 @@ export default function LoginScreen() {
                 }}>
                     <div style={{
                         position: 'sticky',
-                        top: '40px',
+                        top: '80px',
                         width: '100%',
                         maxWidth: '420px',
                         padding: '0 40px'

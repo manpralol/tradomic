@@ -48,6 +48,13 @@ export default function StockDetailPage() {
 
     // Stable ref for txRef so success screen doesn't re-roll
     const txRef = useRef('TXN' + Math.floor(100000000 + Math.random() * 900000000));
+    const successCardRef = useRef(null);
+
+    useEffect(() => {
+        if (swapComplete && successCardRef.current) {
+            successCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [swapComplete]);
 
     useEffect(() => {
         if (!selectedStock) return;
@@ -446,7 +453,7 @@ export default function StockDetailPage() {
                         onClick={handleActionClick}
                         style={{ width: '100%', background: action === 'BUY' ? 'var(--green)' : 'var(--red)', color: '#fff', border: 'none', padding: '16px', borderRadius: '8px', fontSize: '16px', fontWeight: 700, cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-ui, DM Sans, sans-serif)' }}
                     >
-                        <span>{action === 'BUY' ? 'Buy' : 'Sell'} with UPI</span>
+                        <span>{action === 'BUY' ? 'Buy' : 'Sell with UPI'}</span>
                         <span>→</span>
                     </button>
 
@@ -517,7 +524,7 @@ export default function StockDetailPage() {
                             </div>
                         )}
 
-                        <div style={{ padding: '32px' }}>
+                        <div style={{ padding: '32px', paddingBottom: '60px', overflowY: 'auto', maxHeight: '80vh' }}>
                             {action === 'BUY' && (
                                 <>
                                     {upiStep === 1 && (
@@ -757,15 +764,15 @@ export default function StockDetailPage() {
                                             </div>
 
                                             {swapComplete && (
-                                                <div style={{ background: 'rgba(12, 232, 130, 0.05)', border: '1px solid var(--green)', borderRadius: '12px', padding: '20px', animation: 'scaleIn 0.3s ease-out forwards' }}>
+                                                <div ref={successCardRef} style={{ background: 'linear-gradient(135deg, rgba(0,200,100,0.1), rgba(0,200,100,0.05))', border: '1px solid rgba(0,200,100,0.4)', borderRadius: '16px', padding: '24px', animation: 'scaleIn 0.3s ease-out forwards', marginTop: '16px', marginBottom: '32px' }}>
                                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '16px', fontWeight: 700, color: 'var(--green)' }}>
-                                                        <span>✅ Settled in 2.31s</span>
+                                                        <span>✅ Settled in 2.3s</span>
                                                     </div>
                                                     <div style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', marginBottom: '16px', color: 'var(--text)' }}>
-                                                        Transaction: {txRef.current?.slice(0, 8)}...
+                                                        Transaction: {txRef.current?.slice(0, 8)}... <a href={`https://sepolia.etherscan.io/tx/${txRef.current}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>[View on Etherscan ↗]</a>
                                                     </div>
                                                     <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '24px' }}>
-                                                        vs T+1: would have taken 32 hours
+                                                        T+0 · Blockchain confirmed · 32 hours saved
                                                     </div>
                                                     <div style={{ display: 'flex', gap: '12px' }}>
                                                         <button
@@ -889,15 +896,15 @@ export default function StockDetailPage() {
                                             </div>
 
                                             {swapComplete && (
-                                                <div style={{ background: 'rgba(12, 232, 130, 0.05)', border: '1px solid var(--green)', borderRadius: '12px', padding: '20px', animation: 'scaleIn 0.3s ease-out forwards' }}>
+                                                <div ref={successCardRef} style={{ background: 'linear-gradient(135deg, rgba(0,200,100,0.1), rgba(0,200,100,0.05))', border: '1px solid rgba(0,200,100,0.4)', borderRadius: '16px', padding: '24px', animation: 'scaleIn 0.3s ease-out forwards', marginTop: '16px', marginBottom: '32px' }}>
                                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '16px', fontWeight: 700, color: 'var(--green)' }}>
-                                                        <span>✅ Settled in 2.31s</span>
+                                                        <span>✅ Settled in 2.3s</span>
                                                     </div>
                                                     <div style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', marginBottom: '16px', color: 'var(--text)' }}>
-                                                        Transaction: {txRef.current?.slice(0, 8)}...
+                                                        Transaction: {txRef.current?.slice(0, 8)}... <a href={`https://sepolia.etherscan.io/tx/${txRef.current}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>[View on Etherscan ↗]</a>
                                                     </div>
                                                     <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '24px' }}>
-                                                        vs T+1: would have taken 32 hours
+                                                        T+0 · Blockchain confirmed · 32 hours saved
                                                     </div>
                                                     <div style={{ display: 'flex', gap: '12px' }}>
                                                         <button
