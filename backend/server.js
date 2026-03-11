@@ -22,7 +22,11 @@ const wss = new WebSocket.Server({ server });
 
 // --- Middleware ---
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5173'], // Accepting common React frontend ports
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:5173',
+        'https://tradomic.onrender.com'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
