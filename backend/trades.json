@@ -1902,5 +1902,25 @@
     },
     "pan": "ABCDE1234F",
     "paymentRef": "TXN685261989"
+  },
+  {
+    "txId": "79492304-1dce-4884-9c09-474238121d8c",
+    "symbol": "SUNPHARMA",
+    "qty": 10,
+    "type": "BUY",
+    "price": 1784.071077374088,
+    "total": 17840.71077374088,
+    "status": "executing",
+    "steps": [],
+    "settlementTime": null,
+    "txHash": "0x856a515193fff117a657d5d9ecd2d3b5f4823e497e27fcfb7acbd7ff2103ea17",
+    "timestamp": 1773203295604,
+    "buyer": {
+      "name": "Arjun Mehta",
+      "wallet": "0xAM...4f2c",
+      "upiId": "arjunmehta@okicici"
+    },
+    "pan": "ABCDE1234F",
+    "paymentRef": "TXN122686044"
   }
 ]

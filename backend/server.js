@@ -20,7 +20,7 @@ const server = http.createServer(app);
 // WebSocket server attached to the same HTTP server
 const wss = new WebSocket.Server({ server });
 
-// --- Middleware ---
+// Middleware
 app.use(cors({
     origin: [
         'http://localhost:3000',
@@ -35,15 +35,13 @@ app.use(express.json());
 // Health check
 app.get('/', (req, res) => res.json({ status: 'Tradomic API running', version: '1.0.0' }));
 
-// --- REST Routes ---
+// REST Routes
 app.use('/api/payment', paymentRoutes);
 app.use('/api/trades', tradeRoutes);
 app.use('/api/sebi', sebiRoutes);
 app.use('/api/stats', statsRoutes);
 
-// -----------------------------------------------------------------------
 // WebSocket Handling
-// -----------------------------------------------------------------------
 
 const sebiClients = new Set();
 
@@ -62,7 +60,7 @@ wss.on('connection', (ws, req) => {
     const url = req.url;
     console.log(`[WS] New connection: ${url}`);
 
-    // ── SEBI Live Feed ──────────────────────────────────────────────────
+    // SEBI Live Feed
     if (url === '/sebi/live') {
         console.log('[WS] SEBI Dashboard Client Connected');
         sebiClients.add(ws);
@@ -78,7 +76,7 @@ wss.on('connection', (ws, req) => {
         return;
     }
 
-    // ── Trade Settlement Feed ───────────────────────────────────────────
+    // Trade Settlement Feed
     if (url.startsWith('/trade/')) {
         const txId = url.split('/')[2];
         console.log(`[WS] Client connected for Trade: ${txId}`);
@@ -177,9 +175,7 @@ wss.on('connection', (ws, req) => {
     ws.close();
 });
 
-// -----------------------------------------------------------------------
 // Startup
-// -----------------------------------------------------------------------
 
 const PORT = process.env.PORT || 5000;
 
