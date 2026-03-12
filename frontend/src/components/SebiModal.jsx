@@ -17,7 +17,7 @@ export default function SebiModal() {
         setLoading(true);
         setError('');
         try {
-            const res = await fetch('http://localhost:5000/api/sebi/login', {
+            const res = await fetch('https://tradomic-backend.onrender.com/api/sebi/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ officerId, passphrase, otp })

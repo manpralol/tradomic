@@ -20,7 +20,7 @@ export default function SebiDashboard() {
 
     const fetchStats = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/sebi/stats');
+            const res = await fetch('https://tradomic-backend.onrender.com/api/sebi/stats');
             if (res.ok) {
                 const data = await res.json();
                 setStats(data);
@@ -32,7 +32,7 @@ export default function SebiDashboard() {
 
     const fetchTrades = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/sebi/trades');
+            const res = await fetch('https://tradomic-backend.onrender.com/api/sebi/trades');
             if (res.ok) {
                 const data = await res.json();
                 setTrades(data.sort((a, b) => b.timestamp - a.timestamp));
