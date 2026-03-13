@@ -50,7 +50,7 @@ export default function SebiDashboard() {
     useEffect(() => {
         loadData();
 
-        const ws = new WebSocket('ws://localhost:5000/sebi/live');
+        const ws = new WebSocket('wss://tradomic-backend.onrender.com/sebi/live');
 
         ws.onopen = () => setWsConnected(true);
         ws.onclose = () => setWsConnected(false);
@@ -89,7 +89,7 @@ export default function SebiDashboard() {
         const rows = trades.map(t => [
             new Date(t.timestamp).toLocaleString(),
             t.symbol, t.type, t.qty, t.price, t.total,
-            t.settlementTime || '2.31s',
+            t.settlementTime || 'Settled',
             t.txHash || '',
             t.status || 'SETTLED',
             'ABXXX1234X'
@@ -232,7 +232,7 @@ export default function SebiDashboard() {
                                                 <td style={{ padding: '12px 20px', fontFamily: 'var(--font-mono)' }}>₹{t.price?.toLocaleString()}</td>
                                                 <td style={{ padding: '12px 20px', fontFamily: 'var(--font-mono)' }}>₹{t.total?.toLocaleString()}</td>
                                                 <td style={{ padding: '12px 20px', fontFamily: 'var(--font-mono)', color: isSettled ? '#10b981' : '#f59e0b' }} title="T+1 would take 32 hours">
-                                                    {t.settlementTime || '2.31s'}
+                                                    {t.settlementTime || 'Settled'}
                                                 </td>
                                                 <td style={{ padding: '12px 20px', fontFamily: 'var(--font-mono)' }}>
                                                     {t.txHash ? (
@@ -286,7 +286,7 @@ export default function SebiDashboard() {
                                         </div>
                                         <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{t.symbol} × {t.qty} shares</div>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: '#9ca3af' }}>
-                                            <span style={{ fontFamily: 'var(--font-mono)' }}>₹{t.total?.toLocaleString()} · {t.settlementTime || '2.31s'}</span>
+                                            <span style={{ fontFamily: 'var(--font-mono)' }}>₹{t.total?.toLocaleString()} · {t.settlementTime || 'Settled'}</span>
                                             {t.txHash && (
                                                 <a href={`https://sepolia.etherscan.io/tx/${t.txHash}`} target="_blank" rel="noreferrer" style={{ color: '#60a5fa', textDecoration: 'none', fontFamily: 'var(--font-mono)' }}>
                                                     {t.txHash.substring(0, 6)}...{t.txHash.substring(t.txHash.length - 4)} [↗]

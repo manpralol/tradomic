@@ -3,11 +3,15 @@ import { useApp } from '../context/AppContext';
 import { submitTrade, subscribeToTrade } from '../api/index';
 
 const STEP_ICONS = ['🔒', '👤', '⚙️', '⚛️', '✅'];
-const STEP_TIMES = ['10:00:00.000', '10:00:00.051', '10:00:00.210', '10:00:01.400', '10:00:02.290'];
+const CONTRACT_ADDRESS = '0xED01edaBe040016C268701De53d70cb5301faAD3';
 
 export default function TradeModal() {
     const { tradeModalOpen, tradeModalType, closeTradeModal, addTrade, navigate, selectedStock } = useApp();
     const [status, setStatus] = useState('executing');
+    const [settlementMs, setSettlementMs] = useState(0);
+    const timerRef = useRef(null);
+    const startTimeRef = useRef(null);
+
     const [steps, setSteps] = useState([
         { step: 1, label: 'Funds Locked in Smart Contract', detail: 'Waiting...', done: false },
         { step: 2, label: 'Counterparty Verified', detail: 'Waiting...', done: false },
@@ -22,8 +26,16 @@ export default function TradeModal() {
             setSteps(prev => prev.map(p => ({ ...p, done: false, detail: 'Waiting...' })));
             setStatus('executing');
             setFinalInfo(null);
+            setSettlementMs(0);
+            if (timerRef.current) clearInterval(timerRef.current);
             return;
         }
+
+        // Start settlement timer
+        startTimeRef.current = Date.now();
+        timerRef.current = setInterval(() => {
+            setSettlementMs(Date.now() - startTimeRef.current);
+        }, 50);
 
         const txId = window.__tradomic_active_txid;
         if (!txId) return;
@@ -35,16 +47,15 @@ export default function TradeModal() {
                 return s;
             }));
         }, (completeData) => {
+            clearInterval(timerRef.current);
+            const elapsed = ((Date.now() - startTimeRef.current) / 1000).toFixed(2);
             setSteps(prev => prev.map(s => ({ ...s, done: true })));
-            setFinalInfo(completeData);
+            setFinalInfo({ ...completeData, elapsedSeconds: elapsed });
             setStatus('success');
 
-            // Add to Context Portfolio
             if (selectedStock) {
-                // Approximate quantity and price as backend calculates exact. Use mock value derived from TX payload, simplified for frontend:
                 const qtyElement = Array.from(document.querySelectorAll('input')).find(c => c.type === 'number');
                 const qty = qtyElement ? parseFloat(qtyElement.value) : 12;
-
                 addTrade({
                     txId: txId,
                     symbol: selectedStock.sym,
@@ -52,56 +63,65 @@ export default function TradeModal() {
                     type: tradeModalType.toLowerCase(),
                     price: selectedStock.price,
                     total: qty * selectedStock.price,
-                    settlementTime: completeData.settlementTime + 's',
+                    settlementTime: elapsed + 's',
                     txHash: completeData.txHash,
                     timestamp: Date.now()
                 });
             }
         });
 
-        return unsubscribe;
-    }, [tradeModalOpen, tradeModalType, addTrade, selectedStock]);
-
-    // Cleanup on unmount
-    useEffect(() => {
         return () => {
-            // No specific cleanup needed here anymore as the main useEffect handles subscription cleanup
+            unsubscribe();
+            clearInterval(timerRef.current);
         };
-    }, []);
-
-    function handleOverlayClick(e) {
-        if (e.target === e.currentTarget) closeTradeModal();
-    }
+    }, [tradeModalOpen, tradeModalType, addTrade, selectedStock]);
 
     if (!tradeModalOpen) return null;
 
-    const stepLabels = [
-        'Funds Locked in Smart Contract',
-        'Counterparty Verified',
-        'Netting Engine Computed',
-        'Atomic Swap Executing',
-        'Settlement Complete',
-    ];
-    const stepDetails = [
-        '₹37,350 · Wallet: 0xAM...4f2c',
-        'Seller: 0xBR...8a91 · KYC confirmed',
-        'Delta: 10 shares net · Gas saved: 78%',
-        'Simultaneous: money ↔ shares',
-        '10 TCS shares in your portfolio',
-    ];
+    const etherscanTx = finalInfo?.txHash
+        ? `https://sepolia.etherscan.io/tx/${finalInfo.txHash}`
+        : `https://sepolia.etherscan.io/address/${CONTRACT_ADDRESS}`;
+
+    const shortHash = finalInfo?.txHash
+        ? finalInfo.txHash.substring(0, 10) + '...' + finalInfo.txHash.slice(-6)
+        : CONTRACT_ADDRESS.substring(0, 10) + '...' + CONTRACT_ADDRESS.slice(-6);
 
     return (
         <div className="modal-overlay">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h3>{status === 'executing' ? 'Atomic Swap Processing...' : 'Trade Settled'}</h3>
+                    <h3>{status === 'executing' ? 'Atomic Swap Processing...' : 'Trade Settled ✅'}</h3>
                     {status === 'success' && <button className="modal-close" onClick={closeTradeModal}>✕</button>}
                 </div>
+
+                {/* Blockchain proof banner — always visible */}
+                <div style={{
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                    background: 'rgba(29,158,117,0.08)', border: '1px solid rgba(29,158,117,0.3)',
+                    borderRadius: '8px', padding: '8px 14px', margin: '0 0 12px 0', fontSize: '12px'
+                }}>
+                    <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#1D9E75', display: 'inline-block', animation: 'pulse 1.5s infinite' }} />
+                    <span style={{ color: '#1D9E75', fontWeight: 600 }}>LIVE ON BLOCKCHAIN</span>
+                    <span style={{ color: 'var(--text-muted)', fontFamily: 'monospace' }}>Sepolia Testnet</span>
+                    <a
+                        href={`https://sepolia.etherscan.io/address/${CONTRACT_ADDRESS}`}
+                        target="_blank" rel="noopener noreferrer"
+                        style={{ marginLeft: 'auto', color: '#1D9E75', fontFamily: 'monospace', fontSize: '11px', textDecoration: 'none' }}
+                    >
+                        {CONTRACT_ADDRESS.substring(0, 8)}...{CONTRACT_ADDRESS.slice(-4)} ↗
+                    </a>
+                </div>
+
                 <div className="modal-body">
                     {status === 'executing' && (
                         <div className="exec-flow">
-                            <div className="modal-title" id="modalTitle">{tradeModalType} TCS — Atomic Swap</div>
-                            <div className="modal-sub" id="modalSub">Initiating T+0 settlement · Blockchain tx in progress</div>
+                            <div className="modal-title" id="modalTitle">{tradeModalType} {selectedStock?.sym || 'TCS'} — Atomic Swap</div>
+                            <div className="modal-sub" id="modalSub">
+                                Initiating T+0 settlement · Blockchain tx in progress
+                                <span style={{ marginLeft: 12, fontFamily: 'monospace', color: '#1D9E75', fontWeight: 700 }}>
+                                    {(settlementMs / 1000).toFixed(2)}s
+                                </span>
+                            </div>
 
                             <div className="swap-steps" id="swapSteps">
                                 {steps.map((s, i) => (
@@ -110,7 +130,6 @@ export default function TradeModal() {
                                         <div className="step-body">
                                             <div className="step-title">{s.label}</div>
                                             <div className="step-detail">{s.detail}</div>
-                                            {/* <div className="step-time" id={`step${i + 1}time`}>{s.time}</div> */}
                                         </div>
                                     </div>
                                 ))}
@@ -122,14 +141,74 @@ export default function TradeModal() {
                         <div className="success-card">
                             <div className="success-icon">✅</div>
                             <div className="success-message">Trade Settled!</div>
+
+                            {/* T+0 highlight */}
+                            <div style={{
+                                display: 'flex', justifyContent: 'center', gap: '32px',
+                                background: 'rgba(29,158,117,0.08)', borderRadius: '12px',
+                                padding: '16px', margin: '12px 0', border: '1px solid rgba(29,158,117,0.2)'
+                            }}>
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: 4 }}>YOUR SETTLEMENT</div>
+                                    <div style={{ fontSize: '28px', fontWeight: 800, color: '#1D9E75', fontFamily: 'monospace' }}>
+                                        {finalInfo.elapsedSeconds}s
+                                    </div>
+                                    <div style={{ fontSize: '10px', color: '#1D9E75', fontWeight: 600 }}>T+0 ✓</div>
+                                </div>
+                                <div style={{ width: 1, background: 'rgba(29,158,117,0.2)' }} />
+                                <div style={{ textAlign: 'center' }}>
+                                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: 4 }}>TRADITIONAL</div>
+                                    <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--red)', fontFamily: 'monospace' }}>
+                                        48hr
+                                    </div>
+                                    <div style={{ fontSize: '10px', color: 'var(--red)', fontWeight: 600 }}>T+2 ✗</div>
+                                </div>
+                            </div>
+
                             <div className="success-details">
                                 <p><strong>Transaction ID:</strong> {finalInfo.txId}</p>
-                                <p><strong>Settlement Time:</strong> {finalInfo.settlementTime}s</p>
-                                <p><strong>Blockchain Hash:</strong> {finalInfo.txHash}</p>
+                                <p><strong>Settlement Time:</strong> {finalInfo.elapsedSeconds}s</p>
                                 <p><strong>Shares:</strong> {finalInfo.qty} {finalInfo.symbol}</p>
                                 <p><strong>Price:</strong> ₹{finalInfo.price}</p>
+
+                                {/* Blockchain hash — clickable Etherscan link */}
+                                <p style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                    <strong>Blockchain Proof:</strong>
+                                    <a
+                                        href={etherscanTx}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            color: '#1D9E75', fontFamily: 'monospace', fontSize: '12px',
+                                            textDecoration: 'none', background: 'rgba(29,158,117,0.1)',
+                                            padding: '2px 8px', borderRadius: 4, border: '1px solid rgba(29,158,117,0.3)'
+                                        }}
+                                    >
+                                        {shortHash} ↗ Etherscan
+                                    </a>
+                                </p>
                             </div>
-                            <button className="btn btn-primary" onClick={() => { closeTradeModal(); navigate('/portfolio'); }}>View Portfolio</button>
+
+                            <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={() => { closeTradeModal(); navigate('/portfolio'); }}
+                                >
+                                    View Portfolio
+                                </button>
+                                <a
+                                    href={etherscanTx}
+                                    target="_blank" rel="noopener noreferrer"
+                                    style={{
+                                        display: 'inline-flex', alignItems: 'center', gap: 6,
+                                        padding: '10px 20px', borderRadius: 8, fontSize: 14,
+                                        border: '1px solid rgba(29,158,117,0.4)', color: '#1D9E75',
+                                        textDecoration: 'none', fontWeight: 600
+                                    }}
+                                >
+                                    Verify on Etherscan ↗
+                                </a>
+                            </div>
                         </div>
                     )}
                 </div>

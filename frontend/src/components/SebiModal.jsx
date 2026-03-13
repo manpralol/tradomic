@@ -45,7 +45,7 @@ export default function SebiModal() {
         <div className="modal-overlay open" id="sebiModal" onClick={handleOverlayClick}>
             <div className="sebi-modal-box">
                 <button className="modal-close" onClick={closeSebiModal}>✕</button>
-                <div className="sebi-badge">🏛 SEBI OFFICIAL PORTAL</div>
+                <div className="sebi-badge">🏛 SEBI PORTAL</div>
                 <div className="sebi-title">Regulator Login</div>
                 <div className="sebi-sub">Access the immutable trade audit dashboard. All settlements verified on-chain.</div>
                 {error && <div style={{ color: '#ef4444', marginBottom: '15px', fontSize: '0.9rem', padding: '10px', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderRadius: '4px' }}>{error}</div>}

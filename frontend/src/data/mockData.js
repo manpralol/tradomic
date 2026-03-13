@@ -11,6 +11,17 @@ export const STOCKS = [
   { sym: 'SUNPHARMA', name: 'Sun Pharmaceutical',     price: 1784.30,  chg: +0.44, vol: '1.5M', cap: '4.3L Cr',  exch: 'BSE' },
   { sym: 'MARUTI',    name: 'Maruti Suzuki',          price: 12430.00, chg: +1.12, vol: '0.6M', cap: '3.7L Cr',  exch: 'NSE' },
   { sym: 'LTIM',      name: 'LTIMindtree',            price: 5620.45,  chg: -0.76, vol: '0.7M', cap: '1.7L Cr',  exch: 'NSE' },
+  { 
+    sym: 'LAXMICHIT', 
+    name: 'Laxmi Chit Fund Ltd', 
+    price: 420.69, 
+    chg: -8.32, 
+    vol: '0.3M', 
+    cap: '1,200 Cr', 
+    exch: 'BSE',
+    flagged: true,
+    flagReason: 'Counterparty wallet blacklisted by SEBI'
+  }
 ];
 
 export const WATCHLIST = ['RELIANCE','TCS','HDFCBANK','INFY','WIPRO','ICICIBANK','TATAMOTORS','SUNPHARMA'];

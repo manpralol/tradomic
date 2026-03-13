@@ -40,9 +40,13 @@ async function executeTrade({ symbol, qty, type, total }) {
         qty,
         { value: ethAmount }
       );
-      const receipt = await tx.wait();
       console.log('✅ Real tx:', tx.hash);
-      return { txHash: tx.hash, blockNumber: receipt.blockNumber, real: true };
+      tx.wait().then(receipt => {
+        console.log('✅ Mined in block:', receipt.blockNumber);
+      }).catch(err => {
+        console.warn('Mining error:', err.message);
+      });
+      return { txHash: tx.hash, blockNumber: null, real: true };
     } catch (err) {
       console.warn('⚠️  Contract call failed, mock fallback:', err.message);
     }

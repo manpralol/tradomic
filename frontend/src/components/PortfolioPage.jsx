@@ -226,7 +226,7 @@ export default function PortfolioPage() {
                                                     <td className="font-mono">{t.qty}</td>
                                                     <td className="font-mono">₹{t.price.toLocaleString()}</td>
                                                     <td className="font-mono">₹{t.total.toLocaleString()}</td>
-                                                    <td className="font-mono text-green">{t.settlementTime || '2.31s'}</td>
+                                                    <td className="font-mono text-green">{t.settlementTime || 'Settled'}</td>
                                                     <td className="font-mono">
                                                         {t.txHash ?
                                                             <a href={`https://sepolia.etherscan.io/tx/${t.txHash}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>

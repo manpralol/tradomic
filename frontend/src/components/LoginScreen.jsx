@@ -39,7 +39,9 @@ export default function LoginScreen() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    position: 'relative'
+                    position: 'relative',
+                    backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
+                    backgroundSize: '24px 24px'
                 }}>
                     <div style={{
                         position: 'absolute',
@@ -87,7 +89,7 @@ export default function LoginScreen() {
                                 We settle in{' '}
                             </span>
                             <span style={{ fontFamily: "'Bricolage Grotesque', monospace", color: 'var(--accent)', fontSize: '32px', fontWeight: 800 }}>
-                                2.31 seconds.
+                                near-instant.
                             </span>
                         </div>
                     </div>
@@ -95,13 +97,14 @@ export default function LoginScreen() {
                     <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                         {['Ethereum Sepolia', 'T+0 Settlement', 'SEBI Compliant'].map(badge => (
                             <div key={badge} style={{
-                                padding: '8px 16px',
-                                border: '1px solid var(--accent)',
-                                borderRadius: '20px',
+                                padding: '8px 20px',
+                                border: '1px solid rgba(59, 130, 246, 0.4)',
+                                borderRadius: '30px',
                                 fontSize: '0.85rem',
                                 color: 'var(--accent)',
-                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                                fontFamily: "'DM Sans', sans-serif"
+                                backgroundColor: 'rgba(59, 130, 246, 0.15)',
+                                fontFamily: "'DM Sans', sans-serif",
+                                boxShadow: '0 0 12px rgba(59, 130, 246, 0.25)'
                             }}>
                                 {badge}
                             </div>
@@ -209,7 +212,7 @@ export default function LoginScreen() {
                                 onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}
                             >
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '16px', fontWeight: 'bold', marginBottom: '4px' }}>
-                                    <span>🏛</span> SEBI Official Login
+                                    <span>🏛</span> SEBI Portal Login
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', fontSize: '13px', color: 'var(--text-secondary)' }}>
                                     <span>Regulatory surveillance portal</span>
@@ -252,7 +255,7 @@ export default function LoginScreen() {
                         { icon: '🔒', label: 'Lock Funds', time: '0.0s' },
                         { icon: '✓', label: 'Verify Both', time: '0.6s' },
                         { icon: '⚡', label: 'Atomic Swap', time: '1.7s' },
-                        { icon: '✅', label: 'Settled', time: '2.31s' }
+                        { icon: '✅', label: 'Settled', time: 'near-instant' }
                     ].map((step, idx, arr) => (
                         <React.Fragment key={idx}>
                             <div style={{ flex: 1, textAlign: 'center' }}>
@@ -286,7 +289,7 @@ export default function LoginScreen() {
                 {/* Features Grid */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '80px' }}>
                     {[
-                        { icon: '⚡', title: 'T+0 Settlement', desc: <> <span style={{ fontFamily: "'Bricolage Grotesque', monospace" }}>2.31s</span> vs <span style={{ fontFamily: "'Bricolage Grotesque', monospace" }}>32</span> hours</> },
+                        { icon: '⚡', title: 'T+0 Settlement', desc: <> <span style={{ fontFamily: "'Bricolage Grotesque', monospace" }}>near-instant</span> vs <span style={{ fontFamily: "'Bricolage Grotesque', monospace" }}>32</span> hours</> },
                         { icon: '🔒', title: '4-Layer Validation', desc: 'PAN + OTP + MPIN + Smart Contract' },
                         { icon: '🧮', title: 'Smart Netting', desc: <>Reduces settlements by up to <span style={{ fontFamily: "'Bricolage Grotesque', monospace" }}>80%</span></> },
                         { icon: '🏛', title: 'SEBI Compliance', desc: 'Real-time immutable audit log on Ethereum blockchain' },
@@ -374,7 +377,7 @@ export default function LoginScreen() {
                         Ready to experience T+<span style={{ fontFamily: "'Bricolage Grotesque', monospace" }}>0</span>?
                     </h2>
                     <p style={{ fontFamily: "'DM Sans', sans-serif", color: 'var(--text-muted)', marginBottom: '32px', fontSize: '18px' }}>
-                        Join Arjun Mehta and thousands of traders settling in <span style={{ fontFamily: "'Bricolage Grotesque', monospace", color: 'var(--accent)' }}>2.31</span> seconds.
+                        Join Arjun Mehta and thousands of traders settling in <span style={{ fontFamily: "'Bricolage Grotesque', monospace", color: 'var(--accent)' }}>near-instant</span> timing.
                     </p>
                     <button
                         onClick={loginAsTrader}

@@ -170,80 +170,15 @@ export default function StockDetailPage() {
     };
 
     const startProcessing = () => {
-        const msgs = [
-            'Validating identity...',
-            'Contacting your bank...',
-            'Authorising transaction...',
-            'Initiating atomic swap...',
-            'Finalising settlement...'
-        ];
-        let msgIdx = 0;
-        setProcessingMsg(msgs[msgIdx]);
+        const isFraud = selectedStock.sym === 'LAXMICHIT';
 
-        const msgInterval = setInterval(() => {
-            msgIdx = (msgIdx + 1) % msgs.length;
-            setProcessingMsg(msgs[msgIdx]);
-        }, 800);
-
-        const duration = Math.floor(Math.random() * (7000 - 3000 + 1)) + 3000;
-
-        setTimeout(async () => {
-            clearInterval(msgInterval);
-
-            try {
-                const initRes = await initiatePayment({
-                    symbol: selectedStock.sym,
-                    qty,
-                    type: action,
-                    price: orderType === 'LIMIT' ? customPrice : price
-                });
-                const verRes = await verifyPayment({
-                    txId: initRes.txId,
-                    otp: action === 'BUY' ? otp : '482910',
-                    pan,
-                    password: action === 'BUY' ? password : 'sell'
-                });
-                if (verRes.success) {
-                    if (action === 'BUY') {
-                        setUpiStep(6);
-                        setTimeout(() => {
-                            setUpiStep(7);
-                            executeBuy({
-                                symbol: selectedStock.sym,
-                                qty,
-                                price,
-                                txId: initRes.txId,
-                                txHash: verRes.txHash,
-                                settlementTime: '2.31s'
-                            });
-                            startAtomicSwapFeed(verRes.txHash);
-                        }, 1500);
-                    } else {
-                        executeSell({
-                            symbol: selectedStock.sym,
-                            qty,
-                            price,
-                            txId: initRes.txId,
-                            txHash: verRes.txHash,
-                            settlementTime: '2.31s'
-                        });
-                        setUpiStep(4);
-                        startAtomicSwapFeed(verRes.txHash);
-                    }
-                } else {
-                    alert('Payment failed: ' + verRes.error);
-                    setUpiStep(action === 'BUY' ? 4 : 2);
-                }
-            } catch (err) {
-                console.error(err);
-                alert('API Error — check if backend is running');
-                setUpiStep(action === 'BUY' ? 4 : 2);
-            }
-        }, duration);
-    };
-
-    const startAtomicSwapFeed = (txHash) => {
-        const stepsData = [
+        const stepsData = isFraud ? [
+            { label: 'Funds Locked in Smart Contract', detail: `₹${total.toLocaleString('en-IN')} · Wallet: 0xAM...4f2c` },
+            { label: 'Counterparty Wallet Located', detail: 'Seller: 0x000...dead' },
+            { label: 'SEBI Registry Check Failed', detail: 'Wallet 0x000...dead is blacklisted · Fraud detected' },
+            { label: 'Reverting Transaction', detail: 'Smart contract auto-executing refund...' },
+            { label: 'Funds Returned to Buyer', detail: `₹${total.toLocaleString('en-IN')} refunded to 0xAM...4f2c · 0 loss incurred` },
+        ] : [
             { label: 'Funds Locked in Smart Contract', detail: `₹${total.toLocaleString('en-IN')} · Wallet: 0xAM...4f2c` },
             { label: 'Counterparty Verified', detail: 'Seller: 0xBR...8a91 · KYC confirmed' },
             { label: 'Netting Engine Computed', detail: 'Net settlement · Gas optimised' },
@@ -254,21 +189,92 @@ export default function StockDetailPage() {
         let currentStep = 0;
         setSwapSteps([]);
         setSwapComplete(false);
-        txRef.current = txHash;
+        txRef.current = null;
 
         const interval = setInterval(() => {
-            if (currentStep < stepsData.length) {
+            if (currentStep < stepsData.length - 1) {
                 const stepWithTime = {
                     ...stepsData[currentStep],
                     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
                 };
                 setSwapSteps(prev => [...prev, stepWithTime]);
                 currentStep++;
-            } else {
+            } else if (isFraud && currentStep === stepsData.length - 1) {
                 clearInterval(interval);
+                setSwapSteps(prevSteps => [
+                    ...prevSteps,
+                    {
+                        ...stepsData[currentStep],
+                        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+                    }
+                ]);
                 setSwapComplete(true);
             }
-        }, 600);
+        }, isFraud ? 4000 : 6000);
+
+        if (!isFraud) {
+            (async () => {
+                try {
+                    const initRes = await initiatePayment({
+                        symbol: selectedStock.sym,
+                        qty,
+                        type: action,
+                        price: orderType === 'LIMIT' ? customPrice : price
+                    });
+                    const verRes = await verifyPayment({
+                        txId: initRes.txId,
+                        otp: action === 'BUY' ? otp : '482910',
+                        pan,
+                        password: action === 'BUY' ? password : 'sell'
+                    });
+                    if (verRes.success) {
+                        clearInterval(interval);
+                        txRef.current = verRes.txHash;
+
+                        setSwapSteps(prevSteps => {
+                            const newSteps = [...prevSteps];
+                            for (let i = newSteps.length; i < stepsData.length; i++) {
+                                newSteps.push({
+                                    ...stepsData[i],
+                                    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+                                });
+                            }
+                            return newSteps;
+                        });
+                        setSwapComplete(true);
+
+                        if (action === 'BUY') {
+                            executeBuy({
+                                symbol: selectedStock.sym,
+                                qty,
+                                price,
+                                txId: initRes.txId,
+                                txHash: verRes.txHash,
+                                settlementTime: 'near-instant'
+                            });
+                        } else {
+                            executeSell({
+                                symbol: selectedStock.sym,
+                                qty,
+                                price,
+                                txId: initRes.txId,
+                                txHash: verRes.txHash,
+                                settlementTime: 'near-instant'
+                            });
+                        }
+                    } else {
+                        clearInterval(interval);
+                        alert('Payment failed: ' + verRes.error);
+                        setUpiStep(action === 'BUY' ? 4 : 2);
+                    }
+                } catch (err) {
+                    clearInterval(interval);
+                    console.error(err);
+                    alert('API Error — check if backend is running');
+                    setUpiStep(action === 'BUY' ? 4 : 2);
+                }
+            })();
+        }
     };
 
     const handleProceed = () => {
@@ -313,7 +319,7 @@ export default function StockDetailPage() {
     };
     const handleMpinBack = () => setMpin(prev => prev.slice(0, -1));
 
-    const isProcessingStep = (action === 'BUY' && (upiStep === 5 || upiStep === 7)) || (action === 'SELL' && (upiStep === 3 || upiStep === 4));
+    const isProcessingStep = (action === 'BUY' && upiStep === 5) || (action === 'SELL' && upiStep === 3);
 
     return (
         <div style={{ padding: '0px 0px 40px' }}>
@@ -327,14 +333,14 @@ export default function StockDetailPage() {
                 </button>
             </div>
 
-            <div style={{ marginBottom: '32px' }}>
+            <div style={{ marginBottom: '32px', paddingLeft: '24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
                     <h1 style={{ fontSize: '28px', margin: 0 }}>{selectedStock.name}</h1>
                     <span className="exch-tag">{selectedStock.exch}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <span style={{ fontSize: '24px', fontFamily: 'var(--font-mono)' }}>₹{price.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                    <span className={`chg-badge ${isUp ? 'up' : 'down'}`} style={{ fontSize: '14px', padding: '6px 10px' }}>
+                    <span className={`chg-badge ${isUp ? 'up' : 'down'}`} style={{ fontSize: '14px', padding: '6px 10px', color: isUp ? '#00c853' : 'var(--red)' }}>
                         {isUp ? '+' : ''}{selectedStock.chg}% today
                     </span>
                 </div>
@@ -385,11 +391,11 @@ export default function StockDetailPage() {
                     <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', background: 'var(--bg)', padding: '4px', borderRadius: '8px' }}>
                         <button
                             onClick={() => setAction('BUY')}
-                            style={{ flex: 1, padding: '10px', borderRadius: '6px', border: 'none', background: action === 'BUY' ? 'var(--green)' : 'transparent', color: action === 'BUY' ? '#fff' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer' }}
+                            style={{ flex: 1, padding: '10px', borderRadius: '6px', border: 'none', background: action === 'BUY' ? 'var(--green)' : 'transparent', color: action === 'BUY' ? '#fff' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer', fontFamily: "'DM Sans', sans-serif" }}
                         >BUY</button>
                         <button
                             onClick={() => setAction('SELL')}
-                            style={{ flex: 1, padding: '10px', borderRadius: '6px', border: 'none', background: action === 'SELL' ? 'var(--red)' : 'transparent', color: action === 'SELL' ? '#fff' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer' }}
+                            style={{ flex: 1, padding: '10px', borderRadius: '6px', border: 'none', background: action === 'SELL' ? 'var(--red)' : 'transparent', color: action === 'SELL' ? '#fff' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer', fontFamily: "'DM Sans', sans-serif" }}
                         >SELL</button>
                     </div>
 
@@ -476,452 +482,480 @@ export default function StockDetailPage() {
 
             {upiModalOpen && (
                 <div style={{
-                    position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)',
-                    zIndex: 1000, display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', padding: '20px'
+                    position: 'fixed',
+                    inset: 0,
+                    background: 'rgba(0,0,0,0.75)',
+                    zIndex: 999,
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    justifyContent: 'center',
+                    padding: '20px',
+                    paddingTop: '55px',
                 }}>
                     <div style={{
-                        width: '100%', maxWidth: '520px',
                         background: 'var(--bg-secondary)',
-                        border: '1px solid var(--border)',
-                        borderRadius: '20px', overflow: 'hidden'
+                        borderRadius: '16px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        width: '100%',
+                        maxWidth: (action === 'BUY' && upiStep <= 4) ? '760px' : '520px',
+                        height: '80vh',
+                        maxHeight: 'calc(100vh - 80px)',
+                        marginTop: '60px',
+                        overflow: 'hidden',
+                        position: 'relative',
+                        zIndex: 1000,
+                        transition: 'max-width 0.3s ease'
                     }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', borderBottom: '1px solid var(--border)' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>🔒 Secure Payment</span>
-                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', fontWeight: 700 }}>{selectedStock.name} • ₹{(total + (action === 'BUY' && upiStep === 4 ? 2.50 : 0)).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                            </div>
-                            {!isProcessingStep && (
-                                <button onClick={() => setUpiModalOpen(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '20px', cursor: 'pointer' }}>✕</button>
-                            )}
-                        </div>
-
                         {action === 'BUY' && upiStep <= 4 && (
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 40px', background: 'rgba(0,0,0,0.1)' }}>
-                                {['Method', 'Identity', 'Auth', 'Confirm'].map((lbl, idx) => {
-                                    const stepNum = idx + 1;
-                                    const isCompleted = upiStep > stepNum;
-                                    const isCurrent = upiStep === stepNum;
+                            <div style={{
+                                width: '220px',
+                                background: theme === 'bloomberg' ? '#0a0f1a' : 'rgba(0,0,0,0.03)',
+                                padding: '24px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                flexShrink: 0,
+                                borderRight: '1px solid var(--border)',
+                                overflowY: 'auto'
+                            }}>
+                                <div style={{ fontSize: '16px', fontWeight: 700, marginBottom: '32px', color: 'var(--text)' }}>Payment Steps</div>
+                                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                                    {['Method', 'Identity', 'Auth', 'Confirm'].map((lbl, idx) => {
+                                        const stepNum = idx + 1;
+                                        const isCompleted = upiStep > stepNum;
+                                        const isCurrent = upiStep === stepNum;
+                                        const electricBlue = '#00d4ff';
 
-                                    return (
-                                        <React.Fragment key={lbl}>
-                                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', zIndex: 1 }}>
-                                                {isCompleted ? (
-                                                    <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#00e676', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontWeight: 700, fontSize: 14 }}>✓</div>
-                                                ) : isCurrent ? (
-                                                    <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700, fontSize: 14 }}>{stepNum}</div>
-                                                ) : (
-                                                    <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'transparent', border: '2px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontWeight: 700, fontSize: 14 }}>{stepNum}</div>
+                                        return (
+                                            <div key={lbl} style={{ display: 'flex', position: 'relative', flex: idx < 3 ? 1 : 0, minHeight: idx < 3 ? '60px' : '32px' }}>
+                                                {/* Line connection */}
+                                                {idx < 3 && (
+                                                    <div style={{
+                                                        position: 'absolute',
+                                                        left: '15px',
+                                                        top: '32px',
+                                                        bottom: '8px',
+                                                        width: '2px',
+                                                        background: isCompleted ? electricBlue : (theme === 'bloomberg' ? '#1a2535' : 'var(--border)'),
+                                                        zIndex: 0
+                                                    }} />
                                                 )}
-                                                <span style={{ fontSize: '11px', color: isCurrent || isCompleted ? 'var(--text)' : 'var(--text-muted)', fontWeight: isCurrent ? 600 : 400 }}>{lbl}</span>
+
+                                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', zIndex: 1, position: 'relative' }}>
+                                                    {isCompleted ? (
+                                                        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: electricBlue, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>✓</div>
+                                                    ) : isCurrent ? (
+                                                        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: electricBlue, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>{stepNum}</div>
+                                                    ) : (
+                                                        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'transparent', border: `2px solid ${theme === 'bloomberg' ? '#1a2535' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>{stepNum}</div>
+                                                    )}
+                                                    <div style={{ paddingTop: '6px' }}>
+                                                        <div style={{ fontSize: '14px', color: isCurrent ? (theme === 'bloomberg' ? '#fff' : 'var(--text)') : 'var(--text-muted)', fontWeight: isCurrent ? 700 : 500 }}>{lbl}</div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            {idx < 3 && (
-                                                <div style={{ flex: 1, height: '2px', background: isCompleted ? '#00e676' : 'var(--border)', margin: '0 -16px 20px', zIndex: 0 }} />
-                                            )}
-                                        </React.Fragment>
-                                    );
-                                })}
+                                        );
+                                    })}
+                                </div>
                             </div>
                         )}
 
-                        <div style={{ padding: '32px', paddingBottom: '60px', overflowY: 'auto', maxHeight: '80vh' }}>
-                            {action === 'BUY' && (
-                                <>
-                                    {upiStep === 1 && (
-                                        <div>
-                                            <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }}>
-                                                <div
-                                                    onClick={() => setPaymentMethod('UPI')}
-                                                    style={{ flex: 1, padding: '20px', border: `2px solid ${paymentMethod === 'UPI' ? 'var(--accent)' : 'var(--border)'}`, borderRadius: '12px', background: paymentMethod === 'UPI' ? 'rgba(12, 232, 130, 0.05)' : 'transparent', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '8px' }}
-                                                >
-                                                    <div style={{ fontSize: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>📱 UPI</div>
-                                                    <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>arjunmehta@</div>
-                                                    <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>okicici</div>
-                                                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '8px' }}>Instant · Free</div>
-                                                </div>
-                                                <div
-                                                    onClick={() => setPaymentMethod('BANK')}
-                                                    style={{ flex: 1, padding: '20px', border: `2px solid ${paymentMethod === 'BANK' ? 'var(--accent)' : 'var(--border)'}`, borderRadius: '12px', background: paymentMethod === 'BANK' ? 'rgba(12, 232, 130, 0.05)' : 'transparent', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '8px' }}
-                                                >
-                                                    <div style={{ fontSize: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>🏦 Bank Transfer</div>
-                                                    <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>HDFC Bank</div>
-                                                    <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>••••4521</div>
-                                                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '8px' }}>NEFT/IMPS · Free</div>
-                                                </div>
-                                            </div>
-                                            <button
-                                                onClick={handleProceed}
-                                                style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
-                                            >
-                                                Proceed →
-                                            </button>
-                                        </div>
-                                    )}
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', borderBottom: '1px solid var(--border)' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>🔒 Secure Payment</span>
+                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', fontWeight: 700 }}>{selectedStock.name} • ₹{(total + (action === 'BUY' && upiStep === 4 ? 2.50 : 0)).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+                                </div>
+                                {!isProcessingStep && (
+                                    <button onClick={() => setUpiModalOpen(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '20px', cursor: 'pointer' }}>✕</button>
+                                )}
+                            </div>
 
-                                    {upiStep === 2 && (
-                                        <div>
-                                            <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Verify your identity</h3>
-                                            <div style={{ marginBottom: '16px' }}>
-                                                <input
-                                                    type="text"
-                                                    value={pan}
-                                                    onChange={e => setPan(e.target.value.toUpperCase())}
-                                                    style={{ width: '100%', padding: '16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: 'var(--text)', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', fontSize: '18px', letterSpacing: '2px' }}
-                                                />
-                                            </div>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-                                                <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Your PAN is encrypted and never stored</span>
-                                                <span style={{ fontSize: '12px', color: '#00e676', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>✓ Aadhaar Linked</span>
-                                            </div>
-                                            <button
-                                                onClick={handleProceed}
-                                                style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
-                                            >
-                                                Proceed →
-                                            </button>
-                                        </div>
-                                    )}
-
-                                    {upiStep === 3 && (
-                                        <div>
-                                            {authSubStep === 1 && (
-                                                <div>
-                                                    <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Enter password</h3>
-                                                    <div style={{ marginBottom: '32px' }}>
-                                                        <input
-                                                            type="password"
-                                                            value={password}
-                                                            onChange={e => setPassword(e.target.value)}
-                                                            placeholder="••••••••"
-                                                            style={{ width: '100%', padding: '16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: 'var(--text)', fontSize: '16px' }}
-                                                        />
-                                                    </div>
-                                                    <button
-                                                        onClick={handleProceed}
-                                                        style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
+                            <div style={{ padding: '32px', paddingBottom: '60px' }}>
+                                {action === 'BUY' && (
+                                    <>
+                                        {upiStep === 1 && (
+                                            <div>
+                                                <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }}>
+                                                    <div
+                                                        onClick={() => setPaymentMethod('UPI')}
+                                                        style={{ flex: 1, padding: '20px', border: `2px solid ${paymentMethod === 'UPI' ? 'var(--accent)' : 'var(--border)'}`, borderRadius: '12px', background: paymentMethod === 'UPI' ? 'rgba(12, 232, 130, 0.05)' : 'transparent', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '8px' }}
                                                     >
-                                                        Next →
-                                                    </button>
-                                                </div>
-                                            )}
-
-                                            {authSubStep === 2 && (
-                                                <div>
-                                                    <h3 style={{ marginBottom: '8px', fontSize: '20px' }}>Enter OTP</h3>
-                                                    <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '24px' }}>OTP sent to +91 98765 43210</p>
-                                                    <div style={{ marginBottom: '32px' }}>
-                                                        <input
-                                                            type="text"
-                                                            value={otp}
-                                                            onChange={e => setOtp(e.target.value)}
-                                                            placeholder="000000"
-                                                            maxLength={6}
-                                                            style={{ width: '100%', padding: '16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: 'var(--text)', textAlign: 'center', letterSpacing: '12px', fontSize: '32px', fontFamily: 'var(--font-mono)' }}
-                                                        />
+                                                        <div style={{ fontSize: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>📱 UPI</div>
+                                                        <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>arjunmehta@</div>
+                                                        <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>okicici</div>
+                                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '8px' }}>Instant · Free</div>
                                                     </div>
-                                                    <button
-                                                        onClick={handleProceed}
-                                                        style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
+                                                    <div
+                                                        onClick={() => setPaymentMethod('BANK')}
+                                                        style={{ flex: 1, padding: '20px', border: `2px solid ${paymentMethod === 'BANK' ? 'var(--accent)' : 'var(--border)'}`, borderRadius: '12px', background: paymentMethod === 'BANK' ? 'rgba(12, 232, 130, 0.05)' : 'transparent', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '8px' }}
                                                     >
-                                                        Next →
-                                                    </button>
-                                                </div>
-                                            )}
-
-                                            {authSubStep === 3 && (
-                                                <div style={{ textAlign: 'center' }}>
-                                                    <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Enter MPIN</h3>
-                                                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
-                                                        {Array.from({ length: 6 }).map((_, i) => (
-                                                            <div key={i} style={{
-                                                                width: '18px', height: '18px', borderRadius: '50%',
-                                                                background: i < mpin.length ? 'var(--accent)' : 'transparent',
-                                                                border: '2px solid var(--accent)',
-                                                                transition: 'background 0.15s'
-                                                            }} />
-                                                        ))}
+                                                        <div style={{ fontSize: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>🏦 Bank Transfer</div>
+                                                        <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>HDFC Bank</div>
+                                                        <div style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>••••4521</div>
+                                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '8px' }}>NEFT/IMPS · Free</div>
                                                     </div>
-                                                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', maxWidth: '280px', margin: '0 auto 32px' }}>
-                                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => (
+                                                </div>
+                                                <button
+                                                    onClick={handleProceed}
+                                                    style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
+                                                >
+                                                    Proceed →
+                                                </button>
+                                            </div>
+                                        )}
+
+                                        {upiStep === 2 && (
+                                            <div>
+                                                <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Verify your identity</h3>
+                                                <div style={{ marginBottom: '16px' }}>
+                                                    <input
+                                                        type="text"
+                                                        value={pan}
+                                                        onChange={e => setPan(e.target.value.toUpperCase())}
+                                                        style={{ width: '100%', padding: '16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: 'var(--text)', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', fontSize: '18px', letterSpacing: '2px' }}
+                                                    />
+                                                </div>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+                                                    <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Your PAN is encrypted and never stored</span>
+                                                    <span style={{ fontSize: '12px', color: '#00e676', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>✓ Aadhaar Linked</span>
+                                                </div>
+                                                <button
+                                                    onClick={handleProceed}
+                                                    style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
+                                                >
+                                                    Proceed →
+                                                </button>
+                                            </div>
+                                        )}
+
+                                        {upiStep === 3 && (
+                                            <div>
+                                                {authSubStep === 1 && (
+                                                    <div>
+                                                        <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Enter password</h3>
+                                                        <div style={{ marginBottom: '32px' }}>
+                                                            <input
+                                                                type="password"
+                                                                value={password}
+                                                                onChange={e => setPassword(e.target.value)}
+                                                                placeholder="••••••••"
+                                                                style={{ width: '100%', padding: '16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: 'var(--text)', fontSize: '16px' }}
+                                                            />
+                                                        </div>
+                                                        <button
+                                                            onClick={handleProceed}
+                                                            style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
+                                                        >
+                                                            Next →
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                {authSubStep === 2 && (
+                                                    <div>
+                                                        <h3 style={{ marginBottom: '8px', fontSize: '20px' }}>Enter OTP</h3>
+                                                        <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '24px' }}>OTP sent to +91 98765 43210</p>
+                                                        <div style={{ marginBottom: '32px' }}>
+                                                            <input
+                                                                type="text"
+                                                                value={otp}
+                                                                onChange={e => setOtp(e.target.value)}
+                                                                placeholder="000000"
+                                                                maxLength={6}
+                                                                style={{ width: '100%', padding: '16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', color: 'var(--text)', textAlign: 'center', letterSpacing: '12px', fontSize: '32px', fontFamily: 'var(--font-mono)' }}
+                                                            />
+                                                        </div>
+                                                        <button
+                                                            onClick={handleProceed}
+                                                            style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
+                                                        >
+                                                            Next →
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                {authSubStep === 3 && (
+                                                    <div style={{ textAlign: 'center' }}>
+                                                        <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Enter MPIN</h3>
+                                                        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
+                                                            {Array.from({ length: 6 }).map((_, i) => (
+                                                                <div key={i} style={{
+                                                                    width: '18px', height: '18px', borderRadius: '50%',
+                                                                    background: i < mpin.length ? 'var(--accent)' : 'transparent',
+                                                                    border: '2px solid var(--accent)',
+                                                                    transition: 'background 0.15s'
+                                                                }} />
+                                                            ))}
+                                                        </div>
+                                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', maxWidth: '280px', margin: '0 auto 32px' }}>
+                                                            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => (
+                                                                <button
+                                                                    key={n}
+                                                                    onClick={() => handleMpinDigit(String(n))}
+                                                                    style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', fontWeight: 600, cursor: 'pointer', justifySelf: 'center' }}
+                                                                >{n}</button>
+                                                            ))}
+                                                            <div />
                                                             <button
-                                                                key={n}
-                                                                onClick={() => handleMpinDigit(String(n))}
+                                                                onClick={() => handleMpinDigit('0')}
                                                                 style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', fontWeight: 600, cursor: 'pointer', justifySelf: 'center' }}
-                                                            >{n}</button>
-                                                        ))}
-                                                        <div />
+                                                            >0</button>
+                                                            <button
+                                                                onClick={handleMpinBack}
+                                                                style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', cursor: 'pointer', justifySelf: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                                            >⌫</button>
+                                                        </div>
                                                         <button
-                                                            onClick={() => handleMpinDigit('0')}
+                                                            onClick={handleProceed}
+                                                            disabled={mpin.length < 6}
+                                                            style={{ width: '100%', padding: '16px', background: mpin.length === 6 ? 'var(--accent)' : 'var(--border)', color: mpin.length === 6 ? 'var(--bg)' : 'var(--text-muted)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: mpin.length === 6 ? 'pointer' : 'not-allowed' }}
+                                                        >
+                                                            Proceed →
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+
+                                        {upiStep === 4 && (
+                                            <div>
+                                                <div style={{ background: 'var(--bg)', borderRadius: '12px', padding: '24px', marginBottom: '24px' }}>
+                                                    <div style={{ marginBottom: '16px' }}>
+                                                        <div style={{ fontSize: '14px', color: 'var(--text)' }}>Buying {qty} shares of {selectedStock.sym}</div>
+                                                        <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Price per share: ₹{price.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</div>
+                                                    </div>
+                                                    <div style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '16px 0', marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+                                                            <span style={{ color: 'var(--text-muted)' }}>Subtotal:</span>
+                                                            <span style={{ fontFamily: 'var(--font-mono)' }}>₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+                                                        </div>
+                                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+                                                            <span style={{ color: 'var(--text-muted)' }}>Settlement fee:</span>
+                                                            <span style={{ fontFamily: 'var(--font-mono)' }}>₹0.00</span>
+                                                        </div>
+                                                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+                                                            <span style={{ color: 'var(--text-muted)' }}>Blockchain gas:</span>
+                                                            <span style={{ fontFamily: 'var(--font-mono)' }}>~₹2.50</span>
+                                                        </div>
+                                                    </div>
+                                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <span style={{ fontSize: '16px', fontWeight: 700 }}>Total:</span>
+                                                        <span style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'var(--font-mono)', color: 'var(--green)' }}>₹{(total + 2.50).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
+                                                    <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Paying via: {paymentMethod === 'UPI' ? '📱 arjunmehta@okicici' : '🏦 HDFC Bank ••••4521'}</div>
+                                                    <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Settlement wallet: 0xAM...4f2c</div>
+                                                </div>
+
+                                                <button
+                                                    onClick={handleProceed}
+                                                    style={{ width: '100%', padding: '16px', background: 'var(--green)', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '18px', cursor: 'pointer' }}
+                                                >
+                                                    Pay ₹{(total + 2.50).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+                                                </button>
+                                            </div>
+                                        )}
+
+                                    </>
+                                )}
+
+                                {action === 'SELL' && (
+                                    <>
+                                        {upiStep === 1 && (
+                                            <div>
+                                                <div style={{ background: 'var(--bg)', borderRadius: '12px', padding: '24px', marginBottom: '24px' }}>
+                                                    <div style={{ marginBottom: '16px' }}>
+                                                        <div style={{ fontSize: '14px', color: 'var(--text)' }}>Selling {qty} shares of {selectedStock.sym}</div>
+                                                        <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Price per share: ₹{price.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</div>
+                                                    </div>
+                                                    <div style={{ borderTop: '1px solid var(--border)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <span style={{ fontSize: '16px', fontWeight: 700 }}>You'll receive:</span>
+                                                        <span style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'var(--font-mono)', color: 'var(--green)' }}>₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+                                                    </div>
+                                                </div>
+                                                <button
+                                                    onClick={handleProceed}
+                                                    style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
+                                                >
+                                                    Proceed →
+                                                </button>
+                                            </div>
+                                        )}
+
+                                        {upiStep === 2 && (
+                                            <div style={{ textAlign: 'center' }}>
+                                                <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Enter MPIN to confirm</h3>
+                                                <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
+                                                    {Array.from({ length: 6 }).map((_, i) => (
+                                                        <div key={i} style={{
+                                                            width: '18px', height: '18px', borderRadius: '50%',
+                                                            background: i < mpin.length ? 'var(--red)' : 'transparent',
+                                                            border: '2px solid var(--red)',
+                                                            transition: 'background 0.15s'
+                                                        }} />
+                                                    ))}
+                                                </div>
+                                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', maxWidth: '280px', margin: '0 auto 32px' }}>
+                                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => (
+                                                        <button
+                                                            key={n}
+                                                            onClick={() => handleMpinDigit(String(n))}
                                                             style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', fontWeight: 600, cursor: 'pointer', justifySelf: 'center' }}
-                                                        >0</button>
-                                                        <button
-                                                            onClick={handleMpinBack}
-                                                            style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', cursor: 'pointer', justifySelf: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                                                        >⌫</button>
-                                                    </div>
+                                                        >{n}</button>
+                                                    ))}
+                                                    <div />
                                                     <button
-                                                        onClick={handleProceed}
-                                                        disabled={mpin.length < 6}
-                                                        style={{ width: '100%', padding: '16px', background: mpin.length === 6 ? 'var(--accent)' : 'var(--border)', color: mpin.length === 6 ? 'var(--bg)' : 'var(--text-muted)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: mpin.length === 6 ? 'pointer' : 'not-allowed' }}
-                                                    >
-                                                        Proceed →
-                                                    </button>
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-
-                                    {upiStep === 4 && (
-                                        <div>
-                                            <div style={{ background: 'var(--bg)', borderRadius: '12px', padding: '24px', marginBottom: '24px' }}>
-                                                <div style={{ marginBottom: '16px' }}>
-                                                    <div style={{ fontSize: '14px', color: 'var(--text)' }}>Buying {qty} shares of {selectedStock.sym}</div>
-                                                    <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Price per share: ₹{price.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</div>
-                                                </div>
-                                                <div style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '16px 0', marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-                                                        <span style={{ color: 'var(--text-muted)' }}>Subtotal:</span>
-                                                        <span style={{ fontFamily: 'var(--font-mono)' }}>₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                                                    </div>
-                                                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-                                                        <span style={{ color: 'var(--text-muted)' }}>Settlement fee:</span>
-                                                        <span style={{ fontFamily: 'var(--font-mono)' }}>₹0.00</span>
-                                                    </div>
-                                                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-                                                        <span style={{ color: 'var(--text-muted)' }}>Blockchain gas:</span>
-                                                        <span style={{ fontFamily: 'var(--font-mono)' }}>~₹2.50</span>
-                                                    </div>
-                                                </div>
-                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                    <span style={{ fontSize: '16px', fontWeight: 700 }}>Total:</span>
-                                                    <span style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'var(--font-mono)', color: 'var(--green)' }}>₹{(total + 2.50).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                                                </div>
-                                            </div>
-
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
-                                                <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Paying via: {paymentMethod === 'UPI' ? '📱 arjunmehta@okicici' : '🏦 HDFC Bank ••••4521'}</div>
-                                                <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Settlement wallet: 0xAM...4f2c</div>
-                                            </div>
-
-                                            <button
-                                                onClick={handleProceed}
-                                                style={{ width: '100%', padding: '16px', background: 'var(--green)', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '18px', cursor: 'pointer' }}
-                                            >
-                                                Pay ₹{(total + 2.50).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
-                                            </button>
-                                        </div>
-                                    )}
-
-                                    {upiStep === 5 && (
-                                        <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-                                            <div style={{ margin: '0 auto 32px', width: '64px', height: '64px', border: '4px solid var(--border)', borderTopColor: 'var(--accent)', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
-                                            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-                                            <h3 style={{ fontSize: '20px', marginBottom: '8px' }}>{processingMsg}</h3>
-                                        </div>
-                                    )}
-
-                                    {upiStep === 6 && (
-                                        <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-                                            <div style={{ width: '80px', height: '80px', background: 'var(--green)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '40px', color: '#fff', animation: 'scaleIn 0.3s ease-out forwards' }}>✓</div>
-                                            <style>{`@keyframes scaleIn { from { transform: scale(0); } to { transform: scale(1); } }`}</style>
-                                            <h2 style={{ marginBottom: '16px', fontSize: '24px' }}>Payment Successful</h2>
-                                            <p style={{ fontSize: '32px', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--green)', marginBottom: '8px' }}>₹{(total + 2.50).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
-                                            <p style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '32px' }}>Ref: {txRef.current}</p>
-                                            <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Settlement initiating via blockchain...</p>
-                                        </div>
-                                    )}
-
-                                    {upiStep === 7 && (
-                                        <div>
-                                            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                                                <h2 style={{ fontSize: '24px', marginBottom: '8px' }}>⚡ Atomic Settlement Live</h2>
-                                                <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Powered by Ethereum Sepolia Testnet</p>
-                                            </div>
-
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '32px' }}>
-                                                {['Funds Locked in Smart Contract', 'Counterparty Verified', 'Netting Engine Computed', 'Atomic Swap Executing', 'Settlement Complete'].map((label, idx) => {
-                                                    const isActive = swapSteps.length > idx;
-                                                    const stepData = swapSteps[idx];
-                                                    return (
-                                                        <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                                                            {isActive ? (
-                                                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--green)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', flexShrink: 0, marginTop: '2px' }}>✓</div>
-                                                            ) : (
-                                                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--bg)', border: '2px solid var(--border)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, flexShrink: 0, marginTop: '2px' }}>{idx + 1}</div>
-                                                            )}
-                                                            <div style={{ flex: 1, opacity: isActive ? 1 : 0.4, transition: 'opacity 0.3s' }}>
-                                                                <div style={{ fontSize: '16px', fontWeight: isActive ? 700 : 500, marginBottom: '4px' }}>{label}</div>
-                                                                {isActive && (
-                                                                    <>
-                                                                        <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{stepData.detail}</div>
-                                                                        <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px', fontFamily: 'var(--font-mono)' }}>{stepData.time}</div>
-                                                                    </>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    );
-                                                })}
-                                            </div>
-
-                                            {swapComplete && (
-                                                <div ref={successCardRef} style={{ background: 'linear-gradient(135deg, rgba(0,200,100,0.1), rgba(0,200,100,0.05))', border: '1px solid rgba(0,200,100,0.4)', borderRadius: '16px', padding: '24px', animation: 'scaleIn 0.3s ease-out forwards', marginTop: '16px', marginBottom: '32px' }}>
-                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '16px', fontWeight: 700, color: 'var(--green)' }}>
-                                                        <span>✅ Settled in 2.3s</span>
-                                                    </div>
-                                                    <div style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', marginBottom: '16px', color: 'var(--text)' }}>
-                                                        Transaction: {txRef.current?.slice(0, 8)}... <a href={`https://sepolia.etherscan.io/tx/${txRef.current}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>[View on Etherscan ↗]</a>
-                                                    </div>
-                                                    <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '24px' }}>
-                                                        T+0 · Blockchain confirmed · 32 hours saved
-                                                    </div>
-                                                    <div style={{ display: 'flex', gap: '12px' }}>
-                                                        <button
-                                                            onClick={() => { setUpiModalOpen(false); navigate('portfolio'); }}
-                                                            style={{ flex: 1, padding: '12px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}
-                                                        >View Portfolio</button>
-                                                        <button
-                                                            onClick={() => { setUpiModalOpen(false); navigate('portfolio'); }}
-                                                            style={{ flex: 1, padding: '12px', background: 'var(--bg)', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}
-                                                        >View Tradebook</button>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-                                </>
-                            )}
-
-                            {action === 'SELL' && (
-                                <>
-                                    {upiStep === 1 && (
-                                        <div>
-                                            <div style={{ background: 'var(--bg)', borderRadius: '12px', padding: '24px', marginBottom: '24px' }}>
-                                                <div style={{ marginBottom: '16px' }}>
-                                                    <div style={{ fontSize: '14px', color: 'var(--text)' }}>Selling {qty} shares of {selectedStock.sym}</div>
-                                                    <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Price per share: ₹{price.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</div>
-                                                </div>
-                                                <div style={{ borderTop: '1px solid var(--border)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                    <span style={{ fontSize: '16px', fontWeight: 700 }}>You'll receive:</span>
-                                                    <span style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'var(--font-mono)', color: 'var(--green)' }}>₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                                                </div>
-                                            </div>
-                                            <button
-                                                onClick={handleProceed}
-                                                style={{ width: '100%', padding: '16px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: 'pointer' }}
-                                            >
-                                                Proceed →
-                                            </button>
-                                        </div>
-                                    )}
-
-                                    {upiStep === 2 && (
-                                        <div style={{ textAlign: 'center' }}>
-                                            <h3 style={{ marginBottom: '24px', fontSize: '20px' }}>Enter MPIN to confirm</h3>
-                                            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
-                                                {Array.from({ length: 6 }).map((_, i) => (
-                                                    <div key={i} style={{
-                                                        width: '18px', height: '18px', borderRadius: '50%',
-                                                        background: i < mpin.length ? 'var(--red)' : 'transparent',
-                                                        border: '2px solid var(--red)',
-                                                        transition: 'background 0.15s'
-                                                    }} />
-                                                ))}
-                                            </div>
-                                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', maxWidth: '280px', margin: '0 auto 32px' }}>
-                                                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => (
-                                                    <button
-                                                        key={n}
-                                                        onClick={() => handleMpinDigit(String(n))}
+                                                        onClick={() => handleMpinDigit('0')}
                                                         style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', fontWeight: 600, cursor: 'pointer', justifySelf: 'center' }}
-                                                    >{n}</button>
-                                                ))}
-                                                <div />
-                                                <button
-                                                    onClick={() => handleMpinDigit('0')}
-                                                    style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', fontWeight: 600, cursor: 'pointer', justifySelf: 'center' }}
-                                                >0</button>
-                                                <button
-                                                    onClick={handleMpinBack}
-                                                    style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', cursor: 'pointer', justifySelf: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                                                >⌫</button>
-                                            </div>
-                                            <button
-                                                onClick={handleProceed}
-                                                disabled={mpin.length < 6}
-                                                style={{ width: '100%', padding: '16px', background: mpin.length === 6 ? 'var(--red)' : 'var(--border)', color: mpin.length === 6 ? '#fff' : 'var(--text-muted)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: mpin.length === 6 ? 'pointer' : 'not-allowed' }}
-                                            >
-                                                Confirm Sale
-                                            </button>
-                                        </div>
-                                    )}
-
-                                    {upiStep === 3 && (
-                                        <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-                                            <div style={{ margin: '0 auto 32px', width: '64px', height: '64px', border: '4px solid var(--border)', borderTopColor: 'var(--red)', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
-                                            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-                                            <h3 style={{ fontSize: '20px', marginBottom: '8px' }}>{processingMsg}</h3>
-                                        </div>
-                                    )}
-
-                                    {upiStep === 4 && (
-                                        <div>
-                                            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                                                <h2 style={{ fontSize: '24px', marginBottom: '8px' }}>⚡ Atomic Settlement Live</h2>
-                                                <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Powered by Ethereum Sepolia Testnet</p>
-                                            </div>
-
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '32px' }}>
-                                                {['Funds Locked in Smart Contract', 'Counterparty Verified', 'Netting Engine Computed', 'Atomic Swap Executing', 'Settlement Complete'].map((label, idx) => {
-                                                    const isActive = swapSteps.length > idx;
-                                                    const stepData = swapSteps[idx];
-                                                    return (
-                                                        <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                                                            {isActive ? (
-                                                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--green)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', flexShrink: 0, marginTop: '2px' }}>✓</div>
-                                                            ) : (
-                                                                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--bg)', border: '2px solid var(--border)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, flexShrink: 0, marginTop: '2px' }}>{idx + 1}</div>
-                                                            )}
-                                                            <div style={{ flex: 1, opacity: isActive ? 1 : 0.4, transition: 'opacity 0.3s' }}>
-                                                                <div style={{ fontSize: '16px', fontWeight: isActive ? 700 : 500, marginBottom: '4px' }}>{label}</div>
-                                                                {isActive && (
-                                                                    <>
-                                                                        <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{stepData.detail}</div>
-                                                                        <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px', fontFamily: 'var(--font-mono)' }}>{stepData.time}</div>
-                                                                    </>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    );
-                                                })}
-                                            </div>
-
-                                            {swapComplete && (
-                                                <div ref={successCardRef} style={{ background: 'linear-gradient(135deg, rgba(0,200,100,0.1), rgba(0,200,100,0.05))', border: '1px solid rgba(0,200,100,0.4)', borderRadius: '16px', padding: '24px', animation: 'scaleIn 0.3s ease-out forwards', marginTop: '16px', marginBottom: '32px' }}>
-                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '16px', fontWeight: 700, color: 'var(--green)' }}>
-                                                        <span>✅ Settled in 2.3s</span>
-                                                    </div>
-                                                    <div style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', marginBottom: '16px', color: 'var(--text)' }}>
-                                                        Transaction: {txRef.current?.slice(0, 8)}... <a href={`https://sepolia.etherscan.io/tx/${txRef.current}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>[View on Etherscan ↗]</a>
-                                                    </div>
-                                                    <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '24px' }}>
-                                                        T+0 · Blockchain confirmed · 32 hours saved
-                                                    </div>
-                                                    <div style={{ display: 'flex', gap: '12px' }}>
-                                                        <button
-                                                            onClick={() => { setUpiModalOpen(false); navigate('portfolio'); }}
-                                                            style={{ flex: 1, padding: '12px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}
-                                                        >View Portfolio</button>
-                                                        <button
-                                                            onClick={() => { setUpiModalOpen(false); navigate('portfolio'); }}
-                                                            style={{ flex: 1, padding: '12px', background: 'var(--bg)', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}
-                                                        >View Tradebook</button>
-                                                    </div>
+                                                    >0</button>
+                                                    <button
+                                                        onClick={handleMpinBack}
+                                                        style={{ width: '64px', height: '64px', borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', color: 'var(--text)', fontSize: '24px', cursor: 'pointer', justifySelf: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                                    >⌫</button>
                                                 </div>
-                                            )}
+                                                <button
+                                                    onClick={handleProceed}
+                                                    disabled={mpin.length < 6}
+                                                    style={{ width: '100%', padding: '16px', background: mpin.length === 6 ? 'var(--red)' : 'var(--border)', color: mpin.length === 6 ? '#fff' : 'var(--text-muted)', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '16px', cursor: mpin.length === 6 ? 'pointer' : 'not-allowed' }}
+                                                >
+                                                    Confirm Sale
+                                                </button>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
+
+                                {isProcessingStep && (
+                                    <div>
+                                        <style>{`
+                                            @keyframes pulseBlue { 0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); } }
+                                            @keyframes pulseRed { 0% { box-shadow: 0 0 0 0 rgba(255, 61, 90, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 61, 90, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 61, 90, 0); } }
+                                        `}</style>
+                                        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                                            <h2 style={{ fontSize: '24px', marginBottom: '8px' }}>⚡ Atomic Settlement Live</h2>
+                                            <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Powered by Ethereum Sepolia Testnet</p>
                                         </div>
-                                    )}
-                                </>
-                            )}
+
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '32px' }}>
+                                            {(selectedStock.sym === 'LAXMICHIT' ? [
+                                                'Funds Locked in Smart Contract',
+                                                'Counterparty Wallet Located',
+                                                'SEBI Registry Check Failed',
+                                                'Reverting Transaction',
+                                                'Funds Returned to Buyer'
+                                            ] : [
+                                                'Funds Locked in Smart Contract',
+                                                'Counterparty Verified',
+                                                'Netting Engine Computed',
+                                                'Atomic Swap Executing',
+                                                'Settlement Complete'
+                                            ]).map((label, idx) => {
+                                                const isCompleted = swapSteps.length > idx;
+                                                const isActive = swapSteps.length === idx && !swapComplete;
+                                                const isFraud = selectedStock.sym === 'LAXMICHIT';
+
+                                                const defaultDetailsNormal = [
+                                                    `₹${total.toLocaleString('en-IN')} · Wallet: 0xAM...4f2c`,
+                                                    'Seller: 0xBR...8a91 · KYC confirmed',
+                                                    'Net settlement · Gas optimised',
+                                                    'Simultaneous: money ↔ shares',
+                                                    `${qty} ${selectedStock.sym} shares in your portfolio`
+                                                ];
+
+                                                const defaultDetailsFraud = [
+                                                    `₹${total.toLocaleString('en-IN')} · Wallet: 0xAM...4f2c`,
+                                                    'Seller: 0x000...dead',
+                                                    'Wallet 0x000...dead is blacklisted · Fraud detected',
+                                                    'Smart contract auto-executing refund...',
+                                                    `₹${total.toLocaleString('en-IN')} refunded to 0xAM...4f2c · 0 loss incurred`
+                                                ];
+
+                                                const defaultDetails = isFraud ? defaultDetailsFraud : defaultDetailsNormal;
+                                                const displayDetail = isCompleted ? swapSteps[idx].detail : defaultDetails[idx];
+                                                const displayTime = isCompleted ? swapSteps[idx].time : 'Pending...';
+
+                                                const isRedStep = isFraud && (idx === 2 || idx === 3);
+                                                const activeColor = isRedStep ? 'var(--red)' : '#00d4ff';
+                                                const completedColor = isRedStep ? 'var(--red)' : 'var(--green)';
+                                                const activeAnimation = isRedStep ? 'pulseRed 1.5s infinite' : 'pulseBlue 1.5s infinite';
+                                                const completedIcon = isRedStep ? '✕' : (isFraud && idx === 3 ? '🔄' : '✓');
+
+                                                return (
+                                                    <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                                                        {isCompleted ? (
+                                                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: completedColor, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', flexShrink: 0, marginTop: '2px' }}>{completedIcon}</div>
+                                                        ) : isActive ? (
+                                                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: activeColor, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', flexShrink: 0, marginTop: '2px', animation: activeAnimation }}>{idx + 1}</div>
+                                                        ) : (
+                                                            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--bg)', border: '2px solid var(--border)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, flexShrink: 0, marginTop: '2px' }}>{idx + 1}</div>
+                                                        )}
+                                                        <div style={{ flex: 1, opacity: isCompleted || isActive ? 1 : 0.4, transition: 'opacity 0.3s' }}>
+                                                            <div style={{ fontSize: '16px', fontWeight: isCompleted || isActive ? 700 : 500, marginBottom: '4px', color: isActive ? activeColor : (isCompleted && isRedStep ? 'var(--red)' : 'inherit') }}>{label}</div>
+                                                            {isCompleted ? (
+                                                                <>
+                                                                    <div style={{ fontSize: '13px', color: isRedStep ? 'var(--red)' : 'var(--text-muted)' }}>{displayDetail}</div>
+                                                                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px', fontFamily: 'var(--font-mono)' }}>{displayTime}</div>
+                                                                </>
+                                                            ) : isActive ? (
+                                                                <div style={{ fontSize: '13px', color: activeColor, fontWeight: 600 }}>Processing...</div>
+                                                            ) : null}
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+
+                                        {swapComplete && selectedStock.sym === 'LAXMICHIT' && (
+                                            <div ref={successCardRef} style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(255,61,90,0.1), rgba(255,61,90,0.05))', border: '1px solid rgba(255,61,90,0.4)', borderRadius: '16px', padding: '24px', animation: 'scaleIn 0.3s ease-out forwards', marginTop: '16px', marginBottom: '32px' }}>
+                                                <button onClick={() => setUpiModalOpen(false)} style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '20px', cursor: 'pointer', lineHeight: 1 }}>✕</button>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '16px', fontWeight: 700, color: 'var(--red)' }}>
+                                                    <span>🚨 Settlement Blocked by Smart Contract — Funds Safe</span>
+                                                </div>
+                                                <div style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', marginBottom: '16px', color: 'var(--text)' }}>
+                                                    Transaction Blocked · No hash generated · Funds safe
+                                                </div>
+                                                <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '24px' }}>
+                                                    Detected in 2.3s · Traditional T+1 would take 24 hours to detect this fraud
+                                                </div>
+                                                <div style={{ display: 'flex', gap: '12px' }}>
+                                                    <button
+                                                        onClick={() => { setUpiModalOpen(false); navigate('portfolio'); }}
+                                                        style={{ flex: 1, padding: '12px', background: 'var(--red)', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}
+                                                    >View Portfolio</button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {swapComplete && selectedStock.sym !== 'LAXMICHIT' && (
+                                            <div ref={successCardRef} style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(0,200,100,0.1), rgba(0,200,100,0.05))', border: '1px solid rgba(0,200,100,0.4)', borderRadius: '16px', padding: '24px', animation: 'scaleIn 0.3s ease-out forwards', marginTop: '16px', marginBottom: '32px' }}>
+                                                <button onClick={() => setUpiModalOpen(false)} style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '20px', cursor: 'pointer', lineHeight: 1 }}>✕</button>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '16px', fontWeight: 700, color: 'var(--green)' }}>
+                                                    <span>✅ Settled Fast</span>
+                                                </div>
+                                                <div style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', marginBottom: '16px', color: 'var(--text)' }}>
+                                                    Transaction: {txRef.current?.slice(0, 8)}... <a href={`https://sepolia.etherscan.io/tx/${txRef.current}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>[View on Etherscan ↗]</a>
+                                                </div>
+                                                <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '24px' }}>
+                                                    T+0 · Blockchain confirmed · 32 hours saved
+                                                </div>
+                                                <div style={{ display: 'flex', gap: '12px' }}>
+                                                    <button
+                                                        onClick={() => { setUpiModalOpen(false); navigate('portfolio'); }}
+                                                        style={{ flex: 1, padding: '12px', background: 'var(--accent)', color: 'var(--bg)', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}
+                                                    >View Portfolio</button>
+                                                    <button
+                                                        onClick={() => { setUpiModalOpen(false); navigate('portfolio'); }}
+                                                        style={{ flex: 1, padding: '12px', background: 'var(--bg)', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}
+                                                    >View Tradebook</button>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
