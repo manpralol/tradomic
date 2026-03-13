@@ -21,7 +21,7 @@ export function AppProvider({ children }) {
     const [user, setUser] = useState({
         name: 'Arjun Mehta',
         avatar: 'AM',
-        balance: 100000,
+        balance: 100000000,
         upiId: 'arjunmehta@okicici',
         pan: 'ABCDE1234F',
         wallet: '0xAM...4f2c',
